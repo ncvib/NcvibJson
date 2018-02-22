@@ -2,6 +2,13 @@
 
 Version 0.1
 
+Filename
+
+
+Compression
+Use GZIP as 
+
+
 Example
 ```javascript
 {
@@ -15,19 +22,14 @@ Example
   "serialNumber": "1234",
   // REQUIRED. ISO8601 date/time included time zone for triggered value.
   "time": "2018-01-16T15:26:00+1:00",
-  // OPTIONAL. latitude, longitude, altitude in WGS84
-  "coordinates": [59.329444, 18.068611, -32.2],
+  // OPTIONAL. latitude, longitude, altitude in WGS84. Altiude default 0 if only array with lat, long.
+  "coordinate": [59.329444, 18.068611, -32.2],
   // OPTIONAL. 
   "battery": "12.76",
   // OPTIONAL. 
   "temperature": "20.0",
   // REQUIRED/OPTIONAL. REQUIRED if time is not specified as a column in data.
   "sampleRate": "1024",
-  // REQUIRED enitiy for each column in data
-  // If multiple axis use -V, -L, -T for marking vertical longitudinal transverse axis
-  "entity": ["Time", "Acceleration-V", "Acceleration-L", "Acceleration-T"],
-  // REQUIRED. unit for each column in data
-  "unit": ["s", "m/s2","m/s2","m/s2"],
   // REQUIRED/OPTIONAL. REQUIRED if time is not specified as a column in data.
   "numberOfPreTrigSamples": "1024",
   // OPTIONAL. Peak particle velocity, Maximum value of velocity in each axis excluded time column if present
@@ -48,8 +50,13 @@ Example
   "zeroCuttingFrequencyAcceleration": [1.1, 2.2, 3.3],
   // OPTIONAL. Defalut false, true if has overloaded samples
   "overload":false,
-  // REQUIRED, Samples.
-  "data": [
+  // REQUIRED enitiy for each column in data
+  // If multiple axis use -V, -L, -T for marking vertical longitudinal transverse axis
+  "entities": ["Time", "Acceleration-V", "Acceleration-L", "Acceleration-T"],
+  // REQUIRED. unit for each column in data
+  "units": ["s", "m/s2","m/s2","m/s2"],
+  // REQUIRED.
+  "samples": [
     [-1, -1, -1, -1],
     [0, 1.0, 1.0, 1.0],
     [0.00098, 1.1, 1.1, 1.1],
