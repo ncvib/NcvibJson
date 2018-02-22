@@ -3,7 +3,7 @@
 Version 0.1
 
 Example
-```json
+```javascript
 {
   // REQUIRED. Ncvib json format version
   "formatVersion": "0.1",
