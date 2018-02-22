@@ -1,9 +1,9 @@
 {
-  "fileVersionNumber": "0.1",
+  "formatVersion": "0.1",
   "sensorType": "sensorA",
   "serialNumber": 1234,
   "time": "2018-01-16T15:26:00+01:00",
-  "coordinates": [
+  "coordinate": [
     59.329444,
     18.068611,
     -32.2
@@ -11,19 +11,13 @@
   "battery": 12.76,
   "temperature": 20.0,
   "sampleRate": 1024,
-  "entity": [
-    "Time",
-    "Acceleration-V",
-    "Acceleration-L",
-    "Acceleration-T"
-  ],
-  "unit": [
-    "s",
-    "m/s2",
-    "m/s2",
-    "m/s2"
-  ],
   "numberOfPreTrigSamples": 1024,
+  "peakParticleAcceleration": [
+    1.1,
+    2.2,
+    3.3
+  ],
+  "peakParticleAccelerationUnit": "m/s2",
   "peakParticleVelocity": [
     1.1,
     2.2,
@@ -47,7 +41,25 @@
     3.3
   ],
   "overload": false,
-  "data": [
+  "entities": [
+    "Time",
+    "Acceleration-V",
+    "Acceleration-L",
+    "Acceleration-T"
+  ],
+  "units": [
+    "s",
+    "m/s2",
+    "m/s2",
+    "m/s2"
+  ],
+  "samples": [
+    [
+      -1.0,
+      -1.0,
+      -1.0,
+      -1.0
+    ],
     [
       0.0,
       1.0,
