@@ -1,0 +1,61 @@
+{
+  "fileVersionNumber": "0.1",
+  "sensorType": "sensorA",
+  "serialNumber": 1234,
+  "time": "2018-01-16T15:26:00+01:00",
+  "battery": 12.76,
+  "temperature": 20.0,
+  "sampleRate": 1024,
+  "axis": [
+    "V",
+    "L",
+    "T"
+  ],
+  "numberOfPreTrigSamples": 1024,
+  "peakPartAcc": [
+    110.0,
+    120.0,
+    130.0
+  ],
+  "peakPartAccUnit": "m/s2",
+  "peakPartVelocity": [
+    100.0,
+    200.0,
+    300.0
+  ],
+  "peakPartVelocityUnit": "mm/s",
+  "peakPartDisplacement": [
+    10.0,
+    20.0,
+    30.0
+  ],
+  "peakPartDisplacementUnit": "um",
+  "velocityZeroCuttingFreq": [
+    11.0,
+    22.0,
+    33.0
+  ],
+  "accZeroCuttingFreq": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "overload": false,
+  "data": [
+    [
+      10.0,
+      11.0,
+      12.0
+    ],
+    [
+      20.0,
+      21.0,
+      22.0
+    ],
+    [
+      30.0,
+      31.0,
+      32.0
+    ]
+  ]
+}
