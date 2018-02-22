@@ -5,116 +5,55 @@ Version 0.1
 Example
 ```json
 {
+  // REQUIRED. Ncvib json format version
+  "formatVersion": "0.1",
+  // REQUIRED. name of sensor company
+  "sensorCompany": "companyA",
+  // REQUIRED. name of sensor
   "sensorType": "sensorA",
-  "serialNumber": "1234" ,
+  // REQUIRED. serial number of sensor
+  "serialNumber": "1234",
+  // REQUIRED. ISO8601 date/time included time zone for triggered value.
   "time": "2018-01-16T15:26:00+1:00",
+  // OPTIONAL. latitude, longitude, altitude in WGS84
   "coordinates": [59.329444, 18.068611, -32.2],
+  // OPTIONAL. 
   "battery": "12.76",
+  // OPTIONAL. 
   "temperature": "20.0",
+  // REQUIRED/OPTIONAL. REQUIRED if time is not specified as a column in data.
   "sampleRate": "1024",
+  // REQUIRED enitiy for each column in data
+  // If multiple axis use -V, -L, -T for marking vertical longitudinal transverse axis
   "entity": ["Time", "Acceleration-V", "Acceleration-L", "Acceleration-T"],
+  // REQUIRED. unit for each column in data
   "unit": ["s", "m/s2","m/s2","m/s2"],
-	"numberOfPreTrigSamples": "1024",
+  // REQUIRED/OPTIONAL. REQUIRED if time is not specified as a column in data.
+  "numberOfPreTrigSamples": "1024",
+  // OPTIONAL. Peak particle velocity, Maximum value of velocity in each axis excluded time column if present
   "peakParticleVelocity": [1.1, 2.2, 3.3],
+  // REQUIRED/OPTIONAL. REQUIRED if peakParticleVelocity is defined
   "peakParticleVelocityUnit": "mm/s",
+  // OPTIONAL. Peak particle acceleration, Maximum value of acceleration in each axis excluded time column if present
   "peakParticleAcceleration": [1.1, 2.2, 3.3],
+  // REQUIRED/OPTIONAL. REQUIRED if peakParticleVelocity is defined
   "peakParticleAccelerationUnit": "m/s2",
-  "peakParticleDisplacement": [1.1, 2.2, 3.3],
+  // OPTIONAL. Peak particle displacement, Maximum value of displacement in each axis excluded time column if present
+  "peakParticleDisplacement": [1.1, 2.2, 3.3],  
+  // REQUIRED/OPTIONAL. REQUIRED if peakParticleVelocity is defined
   "peakParticleDisplacementUnit": "um",
+  // OPTIONAL. Zero cutting frequency at the maximum velocity in each axis, unit Hz.
   "zeroCuttingFrequencyVelocity": [1.1, 2.2, 3.3],
+  // OPTIONAL. Zero cutting frequency at the maximum acceleration in each axis, unit Hz.
   "zeroCuttingFrequencyAcceleration": [1.1, 2.2, 3.3],
+  // OPTIONAL. Defalut false, true if has overloaded samples
   "overload":false,
+  // REQUIRED, Samples.
   "data": [
+    [-1, -1, -1, -1],
     [0, 1.0, 1.0, 1.0],
     [0.00098, 1.1, 1.1, 1.1],
     [10, 10.0, 10.0, 10.0],
   ]
 }
 ```
-
-- Properties
-sensorType
-Req
-String for sensor type
-serialNumber
-Req
-Serial number of the sensor
-time
-Req
-ISO8601 date/time included time zone.
-n
-
-
-North (latitude) coordinate of sensor in WGS 84
-e
-
-
-East (longitude) coordinate of sensor in WGS 84
-alt
-
-
-Altitude of sensor
-battery
-
-
-Battery voltage
-temperature
-
-
-Temperature
-sampleRate
-
-
-Sample rate
-dataEntity
-
-
-The entity of the data: Acceleration, Velocity, ...
-dataUnit
-
-
-The unit of the data: m/s2, mm/s, ...
-axis
-
-
-The order of the axis of the data array:
-V - Vertical
-L - Longitudinal (Radial)
-T - Transversal
-numberOfPreTrigSamples
-
-
-Number of Pre Triggered Samples
-ppv
-
-
-Array. Peak particle velocity, Maximum value of velocity in each axis
-ppa
-
-
-Array. Peak particle acceleration, Maximum value of acceleration in each axis
-ppd
-
-
-Array. Peak particle displacement, Maximum value of displacement in each axis
-zeroCutingFreqVelocity
-
-
-Array. Zero cutting frequency at the maximum velocity in each axis
-zeroCutingFreqAcc
-
-
-Array. Zero cutting frequency at the maximum acceleration in each axis
-overload
-Req
-Overload flag (exists if transient has overloaded sample)
-0 - No overload
-1 - Has overloaded samples
-data
-Req
-Array of each sample with an array in each axis.
-
-
-
-
-
