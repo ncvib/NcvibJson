@@ -3,13 +3,14 @@
 Version 0.1
 
 Filename
-
+CompanyName_SensorType_SerialNumber_Time_Littera.json
+Exaple companyA_sensorA_1234_2018-01-16T15:26:00+1:00.json
 
 Compression
-Use GZIP as 
+Use GZIP as compression with extension gz.
+Exaple companyA_sensorA_1234_2018-01-16T15:26:00+1:00.json.gz
 
-
-Example
+Example json
 ```javascript
 {
   // REQUIRED. Ncvib json format version
