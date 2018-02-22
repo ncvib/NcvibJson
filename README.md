@@ -1,6 +1,6 @@
 # Specification for Ncvib json
 
-Version 0.1
+Version 0.2
 
 Filename
 CompanyName_SensorType_SerialNumber_Time_Littera.json  
@@ -14,7 +14,7 @@ Example json
 ```javascript
 {
   // REQUIRED. Ncvib json format version
-  "formatVersion": "0.1",
+  "formatVersion": "0.2",
   // REQUIRED. name of sensor company
   "sensorCompany": "companyA",
   // REQUIRED. name of sensor
