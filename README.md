@@ -4,11 +4,11 @@ Version 0.1
 
 Filename
 CompanyName_SensorType_SerialNumber_Time_Littera.json  
-Example: **companyA_sensorA_1234_2018-01-16T15:26:00+1:00.json**
+Example: **companyA_sensorA_1234_2018-01-16T15.26.00+1.00.json**
 
 Compression
 Use GZIP as compression with extension gz.  
-Example: **companyA_sensorA_1234_2018-01-16T15:26:00+1:00.json.gz**
+Example: **companyA_sensorA_1234_2018-01-16T15.26.00+1.00.json.gz**
 
 Example json
 ```javascript
