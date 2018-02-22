@@ -3,59 +3,68 @@
   "sensorType": "sensorA",
   "serialNumber": 1234,
   "time": "2018-01-16T15:26:00+01:00",
+  "coordinates": [
+    59.329444,
+    18.068611,
+    -32.2
+  ],
   "battery": 12.76,
   "temperature": 20.0,
   "sampleRate": 1024,
-  "axis": [
-    "V",
-    "L",
-    "T"
+  "entity": [
+    "Time",
+    "Acceleration-V",
+    "Acceleration-L",
+    "Acceleration-T"
+  ],
+  "unit": [
+    "s",
+    "m/s2",
+    "m/s2",
+    "m/s2"
   ],
   "numberOfPreTrigSamples": 1024,
-  "peakPartAcc": [
-    110.0,
-    120.0,
-    130.0
+  "peakParticleVelocity": [
+    1.1,
+    2.2,
+    3.3
   ],
-  "peakPartAccUnit": "m/s2",
-  "peakPartVelocity": [
-    100.0,
-    200.0,
-    300.0
+  "peakParticleVelocityUnit": "mm/s",
+  "peakParticleDisplacement": [
+    1.1,
+    2.2,
+    3.3
   ],
-  "peakPartVelocityUnit": "mm/s",
-  "peakPartDisplacement": [
-    10.0,
-    20.0,
-    30.0
+  "peakParticleDisplacementUnit": "um",
+  "zeroCuttingFrequencyVelocity": [
+    1.1,
+    2.2,
+    3.3
   ],
-  "peakPartDisplacementUnit": "um",
-  "velocityZeroCuttingFreq": [
-    11.0,
-    22.0,
-    33.0
-  ],
-  "accZeroCuttingFreq": [
-    1.0,
-    2.0,
-    3.0
+  "zeroCuttingFrequencyAcceleration": [
+    1.1,
+    2.2,
+    3.3
   ],
   "overload": false,
   "data": [
     [
+      0.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      0.00098,
+      1.1,
+      1.1,
+      1.1
+    ],
+    [
       10.0,
-      11.0,
-      12.0
-    ],
-    [
-      20.0,
-      21.0,
-      22.0
-    ],
-    [
-      30.0,
-      31.0,
-      32.0
+      10.0,
+      10.0,
+      10.0
     ]
   ]
 }
