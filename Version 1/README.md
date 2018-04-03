@@ -6,6 +6,9 @@ Filename
 CompanyName_SensorType_SerialNumber_Entity_Time_FormatVersion.json  
 Example: **companyA_sensorA_1234_Acceleration_2018-01-16T15.26.00+1.00_v1.json**
 
+> If port exist and the serial number is the serial number of the logger use the following format as the serial number: 
+(serial number) * 10 + port 
+
 Compression
 Use GZIP as compression with extension gz.  
 Example: **companyA_sensorA_1234_Acceleration_2018-01-16T15.26.00+1.00_v1.json.gz**
