@@ -58,15 +58,15 @@ Example json
   // OPTIONAL. Zero cutting frequency at the maximum acceleration in each axis, unit Hz.
   "zeroCuttingFrequencyAcceleration": [1.1, 2.2, 3.3],
   // OPTIONAL. Sound level, Maximum value of the sound level
-  "soundLevelMax": 1.1, 
+  "soundLevelMax": 2.2, 
   // OPTIONAL. Sound level, Average value of the sound level
-  "soundLevelAverage": 2.2, 
+  "soundLevelAverage": 1.1, 
   // REQUIRED/OPTIONAL. REQUIRED if soundLevelMax is defined. Weighting filter used for the sound level
   "soundLevelWeight": "C" 
   // OPTIONAL. Vibration level, Maximum value of the vibration level
-  "vibrationLevelMax": 1.1,
+  "vibrationLevelMax": 2.2,
   // OPTIONAL. Vibration level, Minimum value of the top 10% of the vibration level
-  "vibrationLevelTop10": 2.2,
+  "vibrationLevelTop10": 1.1,
   // OPTIONAL. Defalut false, true if has overloaded samples
   "overload":false,
   // REQUIRED enitiy for each column in data
