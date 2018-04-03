@@ -26,11 +26,11 @@ Example json
   // REQUIRED. ISO8601 date/time included time zone for triggered value.
   "time": "2018-01-16T15:26:00+1:00",
   // REQUIRED. The physical quantity measured by the sensor
-  "measuredEntity": "velocity",
+  "measuredEntity": "acceleration",
   // REQUIRED. The maximal value in this file recorded by the sensor
-  "measuredMaxValue": 1.1,
+  "measuredMaxValue": [1.1, 2.2, 3.3],
   // REQUIRED. The unit of the data representing the measured entity
-  "measuredUnit": "mm/s", 
+  "measuredUnit": "m/s2", 
   // OPTIONAL. latitude, longitude, altitude in WGS84. Altiude default 0 if only array with lat, long.
   "coordinate": [59.329444, 18.068611, -32.2],
   // OPTIONAL. 
