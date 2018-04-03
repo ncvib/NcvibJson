@@ -21,8 +21,16 @@ Example json
   "sensorType": "sensorA",
   // REQUIRED. serial number of sensor
   "serialNumber": "1234",
+  // OPTIONAL. Connection port on the logger, that the sensor is connected to 
+  "port": 1,
   // REQUIRED. ISO8601 date/time included time zone for triggered value.
   "time": "2018-01-16T15:26:00+1:00",
+  // REQUIRED. The physical quantity measured by the sensor
+  "measuredEntity": "velocity",
+  // REQUIRED. The maximal value in this file recorded by the sensor
+  "measuredMaxValue": 1.1,
+  // REQUIRED. The unit of the data representing the measured entity
+  "measuredUnit": "mm/s", 
   // OPTIONAL. latitude, longitude, altitude in WGS84. Altiude default 0 if only array with lat, long.
   "coordinate": [59.329444, 18.068611, -32.2],
   // OPTIONAL. 
@@ -49,11 +57,21 @@ Example json
   "zeroCuttingFrequencyVelocity": [1.1, 2.2, 3.3],
   // OPTIONAL. Zero cutting frequency at the maximum acceleration in each axis, unit Hz.
   "zeroCuttingFrequencyAcceleration": [1.1, 2.2, 3.3],
+  // OPTIONAL. Sound level, Maximum value of the sound level
+  "soundLevelMax": 1.1, 
+  // OPTIONAL. Sound level, Average value of the sound level
+  "soundLevelAverage": 2.2, 
+  // REQUIRED/OPTIONAL. REQUIRED if soundLevelMax is defined. Weighting filter used for the sound level
+  "soundLevelWeight": "C" 
+  // OPTIONAL. Vibration level, Maximum value of the vibration level
+  "vibrationLevelMax": 1.1,
+  // OPTIONAL. Vibration level, Minimum value of the top 10% of the vibration level
+  "vibrationLevelTop10": 2.2,
   // OPTIONAL. Defalut false, true if has overloaded samples
   "overload":false,
   // REQUIRED enitiy for each column in data
-  // If multiple axis use -V, -L, -T for marking vertical longitudinal transverse axis
-  "entities": ["Time", "Acceleration-V", "Acceleration-L", "Acceleration-T"],
+  // If multiple axis use V, L, T for marking vertical longitudinal transverse axis
+  "vibrationAxes": ["V", "L", "T"],
   // REQUIRED. unit for each column in data
   "units": ["s", "m/s2","m/s2","m/s2"],
   // REQUIRED.
