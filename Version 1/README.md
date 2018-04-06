@@ -6,7 +6,7 @@ Filename
 CompanyName_SensorType_SerialNumber_Entity_Time_FormatVersion.json  
 Example: **companyA_sensorA_1234_Acceleration_2018-01-16T15.26.00+1.00_v1.json**
 
-> If port exist and the serial number is the serial number of the logger use the following format: Filename
+> If port exist and the serial number is the serial number of the logger use the following format: 
 CompanyName_SensorType_SerialNumber_Port_Entity_Time_FormatVersion.json  
 Example: **companyA_sensorA_1234_1_Acceleration_2018-01-16T15.26.00+1.00_v1.json** 
 
