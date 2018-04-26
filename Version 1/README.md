@@ -3,16 +3,12 @@
 Version 1
 
 Filename
-CompanyName_SensorType_SerialNumber_Entity_Time_FormatVersion.json  
-Example: **companyA_sensorA_1234_Acceleration_2018-01-16T15.26.00+1.00_v1.json**
-
-> If port exist and the serial number is the serial number of the logger use the following format: 
-CompanyName_SensorType_SerialNumber_Port_Entity_Time_FormatVersion.json  
-Example: **companyA_sensorA_1234_1_Acceleration_2018-01-16T15.26.00+1.00_v1.json** 
+UniqueValueForThatCompanyAndSensor_FormatVersion.json  
+Example: **abc123_v1.json**
 
 Compression
 Use GZIP as compression with extension gz.  
-Example: **companyA_sensorA_1234_Acceleration_2018-01-16T15.26.00+1.00_v1.json.gz**
+Example: **abc123_v1.json.gz**
 
 Example json
 ```javascript
@@ -31,10 +27,10 @@ Example json
   "time": "2018-01-16T15:26:00+1:00",
   // REQUIRED. The physical quantity measured by the sensor
   "measuredEntity": "acceleration",
-  // REQUIRED. The maximal value in this file recorded by the sensor
-  "measuredMaxValue": [1.1, 2.2, 3.3],
   // REQUIRED. The unit of the data representing the measured entity
   "measuredUnit": "m/s2", 
+  // OPTIONAL. The maximum absolute value in the samples in this file recorded by the sensor
+  "measuredMaxValue": [1.1, 2.2, 3.3],
   // OPTIONAL. latitude, longitude, altitude in WGS84. Altiude default 0 if only array with lat, long.
   "coordinate": [59.329444, 18.068611, -32.2],
   // OPTIONAL. 
