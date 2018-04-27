@@ -5,10 +5,12 @@ Version 1
 Filename
 UniqueValueForThatCompanyAndSensor_FormatVersion.json  
 Example: **abc123_v1.json**
+**or companyA_sensorA_1234_Acceleration_2018-01-16T15.26.00+1.00_v1.json** 
 
 Compression
 Use GZIP as compression with extension gz.  
 Example: **abc123_v1.json.gz**
+**or companyA_sensorA_1234_Acceleration_2018-01-16T15.26.00+1.00_v1.json**
 
 Example json
 ```javascript
