@@ -15,27 +15,35 @@ Example: **abc123_v1.json.gz**
 Example json
 ```javascript
 {
-  // REQUIRED. Ncvib json format version
+  // REQUIRED. Ncvib json format version.
   "formatVersion": "1",
-  // REQUIRED. name of sensor company
-  "sensorCompany": "companyA",
-  // REQUIRED. name of sensor
-  "sensorType": "sensorA",
-  // REQUIRED. serial number of sensor
+  // REQUIRED. name of instrument company.
+  "instrumentCompany": "companyA",
+  // REQUIRED. name of instrument.
+  "instrumentType": "instrumentA",
+  // REQUIRED. serial number of instrument.
   "serialNumber": "1234",
-  // OPTIONAL. Connection port on the logger, that the sensor is connected to 
+  // OPTIONAL. The sensor type if the instruemnt is a logger.
+  "sensorType": "sensorA",
+  // OPTIONAL. Connection port on the logger, that the sensor is connected to.
   "port": 1,
   // REQUIRED. ISO8601 date/time included time zone for triggered value.
   "time": "2018-01-16T15:26:00+1:00",
   // REQUIRED/OPTIONAL. REQUIRED if time is not specified as a column in samples.
   "sampleRate": "1024",
-  // REQUIRED/OPTIONAL. REQUIRED if time is not specified as a column in samples.
-  **"PreTrigger": "1024",**
+  // OPTIONAL.  Pretrigger time in samples in seconds. 
+  "preTriggerSamples": "1024",
+  // OPTIONAL. Pretrigger time in samples in seconds.
+  "preTriggerRecordTime" : 1,
   // REQUIRED/OPTIONAL. REQUIRED if multiple column in values
   // If multiple axis use V, L, T for marking vertical longitudinal transverse axis or x, y, z for sensor internal.
-  "Axes": ["V", "L", "T"],
+  "axes": ["V", "L", "T"],
   // OPTIONAL. Transformation matrix, array the 3x3 matrix for converting sensor internal x,y,z to world V, L, T.
   "transformationMatrix" : [1, 0 , 0, 0, 1, 0, 0, 0, 1],
+  // OPTIONAL. Specifies the trigger level per axis.
+  "triggerLevel": [10, 10, 10],
+  // OPTIONAL. Specifies the trigger level unit
+  "triggerLevelUnit": "mm/s"
   // OPTIONAL. unit, entity and values in each axis excluded time column if present
   "values": [
     { 
@@ -60,14 +68,15 @@ Example json
       "entity": "ZeroCuttingFrequencyVelocity"
     }
   ],
-  // OPTIONAL. Defined by name or high pass/low pass the filter settings for calculated Values.
-  "Filter": {
-    "name": "Blasting"
+  // OPTIONAL. filter profile name used by the instrument
+  "filterProfile" : "blasting",
+  // OPTIONAL. Defined of the filer
+  "filterDefinition": {
     "highPassFrequency": "5",
-    "highPassorder": "2",
-    "lowPassFrequency": "5",
-    "lowPassorder": "2",    
-    "note": ""
+    "highPassOrder": "2",
+    "lowPassFrequency": "350",
+    "lowPassOrder": "3",
+    "family": "butterworth"
   },
   // OPTIONAL. latitude, longitude, altitude in WGS84. Altiude default 0 if only array with lat, long.
   "coordinate": [59.329444, 18.068611, -32.2],
@@ -81,10 +90,8 @@ Example json
   "sampleEntity": "Velocity",
   // REQUIRED. unit for each column in data
   "sampleUnits": ["s", "m/s2","m/s2","m/s2"],
-  // REQUIRED/OPTIONAL. REQUIRED if samples are not filtered as values 
-  "sampleFilter": {
-    "name": "Raw"
-  },
+  // OPTIONAL. The source of the sample, raw or filtered.
+  "sampleSource": "raw"
   // REQUIRED.
   "samples": [
     [-1, -1, -1, -1],
@@ -106,3 +113,5 @@ Example json
 * SoundLevelAverage
 * VibrationLevelMax
 * VibrationLevelTop10
+* Velocity RMS
+* Voltage
