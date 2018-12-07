@@ -36,15 +36,15 @@ Example json
   // OPTIONAL. Pretrigger time in samples in seconds.
   "preTriggerRecordTime" : 1,
   // REQUIRED/OPTIONAL. REQUIRED if multiple column in values
-  // If multiple axis use V, L, T for marking vertical longitudinal transverse axis or x, y, z for sensor internal.
+  // If multiple axis use V, L, T marking vertical longitudinal transverse axes or V, N, E for vertical north east axes or x, y, z for sensor internal axes.
   "axes": ["V", "L", "T"],
   // OPTIONAL. Transformation matrix, array the 3x3 matrix for converting sensor internal x,y,z to world V, L, T.
   "transformationMatrix" : [1, 0 , 0, 0, 1, 0, 0, 0, 1],
-  // OPTIONAL. Specifies the trigger level per axis.
+  // OPTIONAL. Specifies the trigger level per axes.
   "triggerLevel": [10, 10, 10],
   // OPTIONAL. Specifies the trigger level unit
   "triggerLevelUnit": "mm/s"
-  // OPTIONAL. unit, entity and values in each axis excluded time column if present
+  // OPTIONAL. unit, entity and values in each axes excluded time column if present
   "values": [
     { 
       "value": [10, 10, 10],
