@@ -1,3 +1,3 @@
 # Specification for Ncvib json
 
-Ncvib json is a format for sending in mesurement data to Ncvib
+Ncvib json is a format for integration of triggered and continuous values from vibration sensors

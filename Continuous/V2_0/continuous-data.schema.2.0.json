@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContinuousData",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "instrumentCompany",
+    "instrumentType",
+    "serialNumber",
+    "port",
+    "startTime",
+    "intervalTimeInSeconds",
+    "quantity",
+    "unit",
+    "samples"
+  ],
+  "properties": {
+    "formatVersion": {
+      "type": "string",
+      "const": "2.0"
+    },
+    "instrumentCompany": {
+      "type": "string"
+    },
+    "instrumentType": {
+      "type": "string"
+    },
+    "serialNumber": {
+      "type": "integer"
+    },
+    "sensorType": {
+      "type": "string",
+      "nullable": true
+    },
+    "port": {
+      "type": "integer",
+      "description": "NorSonic Channel"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "intervalTimeInSeconds": {
+      "type": "integer"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "unit": {
+      "type": "string",
+      "description": "m/s, m/s^2, etc."
+    },
+    "axes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/sample"
+      }
+    }
+  },
+  "definitions": {
+    "sample": {
+      "type": "object",
+      "required": [
+        "time",
+        "values"
+      ],
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      }
+    }
+  }
+}

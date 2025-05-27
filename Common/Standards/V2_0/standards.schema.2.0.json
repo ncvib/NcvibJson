@@ -1,0 +1,515 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Standard",
+  "type": "object",
+  "oneOf": [
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "Unknown"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 0
+            },
+            "highPass": {
+              "const": 1000
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "ISEE Seismograph"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 2
+            },
+            "highPass": {
+              "const": 250
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "DIN 4150-3"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 1
+            },
+            "highPass": {
+              "const": 315
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "DIN 4150-2 KB"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 1
+            },
+            "highPass": {
+              "const": 80
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "BS 7385"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 1
+            },
+            "highPass": {
+              "const": 300
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "AS 2187-2 2006"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 2
+            },
+            "highPass": {
+              "const": 250
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "ÖNORM S 9012"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 1
+            },
+            "highPass": {
+              "const": 80
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "ISO 8569 Accel"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 5
+            },
+            "highPass": {
+              "const": 300
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "IN1226"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 1
+            },
+            "highPass": {
+              "const": 15
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "NS 8176 Komfort"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 1
+            },
+            "highPass": {
+              "const": 80
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "NS 8141 Byggverk"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 5
+            },
+            "highPass": {
+              "const": 300
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "NS 8141-1:2012 + A1:2013"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 3
+            },
+            "highPass": {
+              "const": 400
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "SS 4604866 Spräng"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 5
+            },
+            "highPass": {
+              "const": 312
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "SS 025211 Schakt"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 2
+            },
+            "highPass": {
+              "const": 150
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "SS 4604861 Komfort"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 1
+            },
+            "highPass": {
+              "const": 80
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "Geophone"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 5
+            },
+            "highPass": {
+              "const": 500
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "ICPE-Cirkulaire 86"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 1
+            },
+            "highPass": {
+              "const": 150
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    },
+    {
+      "properties": {
+        "name": {
+          "enum": [
+            "SS 25211 Schakt 5-150Hz"
+          ]
+        },
+        "filterDefinition": {
+          "type": "object",
+          "properties": {
+            "lowPass": {
+              "const": 5
+            },
+            "highPass": {
+              "const": 150
+            }
+          },
+          "required": [
+            "lowPass",
+            "highPass"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "filterDefinition"
+      ]
+    }
+  ],
+  "required": [
+    "name",
+    "filterDefinition"
+  ]
+}

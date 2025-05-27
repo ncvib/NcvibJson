@@ -1,0 +1,219 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TriggeredData",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "instrumentCompany",
+    "instrumentType",
+    "serialNumber",
+    "measuredQuantity",
+    "measuredUnit",
+    "startTime",
+    "sampleRate",
+    "sampleUnits",
+    "samples"
+  ],
+  "properties": {
+    "formatVersion": {
+      "type": "string",
+      "const": "2.0"
+    },
+    "instrumentCompany": {
+      "type": "string"
+    },
+    "instrumentType": {
+      "type": "string",
+      "description": "LoggerType"
+    },
+    "serialNumber": {
+      "type": "string"
+    },
+    "sensorType": {
+      "type": "string",
+      "nullable": true
+    },
+    "port": {
+      "type": "integer",
+      "nullable": true
+    },
+    "coordinate": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "nullable": true
+    },
+    "battery": {
+      "type": "string",
+      "nullable": true
+    },
+    "temperature": {
+      "type": "string",
+      "nullable": true
+    },
+    "overload": {
+      "type": "boolean",
+      "nullable": true
+    },
+    "filteredSamples": {
+      "type": "boolean"
+    },
+    "standard": {
+      "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json"
+    },
+    "measuredQuantity": {
+      "type": "string",
+      "enum": [
+        "Velocity",
+        "Acceleration",
+        "Displacement"
+      ]
+    },
+    "measuredUnit": {
+      "type": "string"
+    },
+    "measuredMaxValue": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "peakParticleVelocity": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "peakParticleVelocityUnit": {
+      "type": "string"
+    },
+    "peakParticleAcceleration": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "peakParticleAccelerationUnit": {
+      "type": "string"
+    },
+    "peakParticleDisplacement": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "peakParticleDisplacementUnit": {
+      "type": "string"
+    },
+    "zeroCuttingFrequencyVelocity": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "zeroCuttingFrequencyVelocityUnit": {
+      "type": "string",
+      "default": "Hz"
+    },
+    "zeroCuttingFrequencyAcceleration": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "zeroCuttingFrequencyAccelerationUnit": {
+      "type": "string",
+      "default": "Hz"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sampleRate": {
+      "type": "number"
+    },
+    "numberOfPreTriggerSamples": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "axes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "transformationMatrix": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "nullable": true
+    },
+    "triggerLevel": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "nullable": true
+    },
+    "triggerLevelUnit": {
+      "type": "string",
+      "nullable": true
+    },
+    "maxSamples": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/sampleItem"
+      },
+      "nullable": true
+    },
+    "sampleUnits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "sampleItem": {
+      "type": "object",
+      "required": [
+        "axis",
+        "quantity",
+        "unit"
+      ],
+      "properties": {
+        "axis": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "timeOffsetInSeconds": {
+          "type": "number",
+          "nullable": true
+        }
+      }
+    }
+  }
+}

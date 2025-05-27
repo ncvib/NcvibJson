@@ -1,0 +1,189 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TriggeredData",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "instrumentCompany",
+    "instrumentType",
+    "serialNumber",
+    "time",
+    "sampleRate",
+    "sampleEntity"
+  ],
+  "properties": {
+    "formatVersion": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "instrumentCompany": {
+      "type": "string"
+    },
+    "instrumentType": {
+      "type": "string",
+      "description": "LoggerType"
+    },
+    "serialNumber": {
+      "type": "string"
+    },
+    "sensorType": {
+      "type": "string",
+      "nullable": true
+    },
+    "port": {
+      "type": "integer",
+      "nullable": true
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sampleRate": {
+      "type": "number"
+    },
+    "preTriggerSamples": {
+      "type": "integer",
+      "description": "Samples per seconds.",
+      "nullable": true
+    },
+    "preTriggerRecordTime": {
+      "type": "number",
+      "nullable": true
+    },
+    "axes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "transformationMatrix": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "nullable": true
+    },
+    "triggerLevel": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "nullable": true
+    },
+    "triggerLevelUnit": {
+      "type": "string",
+      "nullable": true
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/valueItem"
+      },
+      "nullable": true
+    },
+    "filterProfile": {
+      "type": "string",
+      "nullable": true
+    },
+    "filterDefinition": {
+      "$ref": "#/definitions/filterDefinitionItem",
+      "nullable": true
+    },
+    "coordinate": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "nullable": true
+    },
+    "battery": {
+      "type": "string",
+      "nullable": true
+    },
+    "temperature": {
+      "type": "string",
+      "nullable": true
+    },
+    "overload": {
+      "type": "boolean",
+      "nullable": true
+    },
+    "sampleEntity": {
+      "type": "string"
+    },
+    "sampleUnits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sampleSource": {
+      "type": "string",
+      "nullable": true
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "filterDefinitionItem": {
+      "type": "object",
+      "required": [
+        "highPassFrequency",
+        "highPassOrder",
+        "lowPassFrequency",
+        "lowPassOrder",
+        "family"
+      ],
+      "properties": {
+        "highPassFrequency": {
+          "type": "string"
+        },
+        "highPassOrder": {
+          "type": "string"
+        },
+        "lowPassFrequency": {
+          "type": "string"
+        },
+        "lowPassOrder": {
+          "type": "string"
+        },
+        "family": {
+          "type": "string"
+        }
+      }
+    },
+    "valueItem": {
+      "type": "object",
+      "required": [
+        "unit",
+        "entity"
+      ],
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "unit": {
+          "type": "string"
+        },
+        "entity": {
+          "type": "string"
+        },
+        "timeOffsetInSeconds": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    }
+  }
+}
