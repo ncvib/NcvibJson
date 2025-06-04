@@ -3,9 +3,9 @@ using NJsonSchema.Validation;
 
 namespace NcvibJson;
 
-public class SchemaValidator
+public class SchemaValidator : ISchemaValidator
 {
-    private static bool ValidateJson(string jsonContent, string schemaPath)
+    public bool ValidateJson(string jsonContent, string schemaPath)
     {
         var jsonSchema = File.ReadAllText(schemaPath);
         var schema = JsonSchema.FromJsonAsync(jsonSchema, schemaPath).Result;
