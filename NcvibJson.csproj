@@ -20,6 +20,7 @@
     <None Remove="Common\Standards\V2_0\standards.schema.2.0.json" />
     <EmbeddedResource Include="Common\Standards\V2_0\standards.schema.2.0.json" />
     <None Remove="Continuous\V2_0\continuous-data.schema.2.0.json" />
+    <EmbeddedResource Include="Configuration\V2_0\configuration.schema.2.0.json" />
     <EmbeddedResource Include="Continuous\V2_0\continuous-data.schema.2.0.json" />
     <None Remove="Triggered\V1_0\triggered-data.schema.1.0.json" />
     <EmbeddedResource Include="Triggered\V1_0\triggered-data.schema.1.0.json" />

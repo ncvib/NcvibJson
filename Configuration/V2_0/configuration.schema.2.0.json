@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Configuration",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "instrumentIanaTimezone"
+  ],
+  "properties": {
+    "formatVersion": {
+      "type": "string",
+      "const": "2.0",
+      "description": "Configuration format version"
+    },
+    "instrumentIanaTimezone": {
+      "type": "string",
+      "description": "IANA timezone identifier for the instrument",
+      "default": "Etc/UTC"
+    },
+    "activeHours": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 23
+      },
+      "description": "List of hours (0-23) when the instrument is active",
+      "default": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+    },
+    "nodeConfigurations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/NodeConfiguration"
+      },
+      "description": "Array of configuration settings for nodes",
+      "default": []
+    }
+  },
+  "definitions": {
+    "NodeConfiguration": {
+      "type": "object",
+      "properties": {
+        "axis": {
+          "type": ["string", "null"],
+          "description": "Axis identifier (V, L, or T) for vibration sensors",
+          "enum": ["V", "L", "T", null]
+        },
+        "standard": {
+          "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json",
+          "description": "Standard filter configuration"
+        },
+        "intervalPeriodInSeconds": {
+          "type": "integer",
+          "description": "Interval period in seconds",
+          "default": 120
+        },
+        "recordingPeriodInSeconds": {
+          "type": "integer",
+          "description": "Recording period in seconds",
+          "default": 5
+        },
+        "threshold": {
+          "type": "number",
+          "description": "Threshold value",
+          "default": 1.0
+        },
+        "thresholdActive": {
+          "type": "boolean",
+          "description": "Indication if threshold is active",
+          "default": true
+        }
+      }
+    }
+  }
+}
