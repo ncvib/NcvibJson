@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Status",
+  "type": "object",
+  "required": ["formatVersion"],
+  "properties": {
+    "formatVersion": {
+      "type": "string",
+      "const": "2.0",
+      "description": "Format version of the status document"
+    },
+    "batteryLevelVoltage": {
+      "type": ["number", "null"],
+      "description": "Battery level in volts"
+    },
+    "batteryLevelPercentage": {
+      "type": ["number", "null"],
+      "description": "Battery level as a percentage"
+    },
+    "signalStrength": {
+      "type": ["number", "null"],
+      "description": "Signal strength measurement"
+    },
+    "availableMemory": {
+      "type": ["number", "null"],
+      "description": "Available memory measurement"
+    },
+    "statusTimeInUtc": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Time of status report in UTC"
+    },
+    "latestDataDeliveryInUtc": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Time of latest data delivery in UTC"
+    },
+    "monitoringActive": {
+      "type": ["boolean", "null"],
+      "description": "Indicates if monitoring is currently active"
+    },
+    "position": {
+      "oneOf": [
+        { "$ref": "#/definitions/Coordinates" },
+        { "type": "null" }
+      ],
+      "description": "Geographic coordinates of the device"
+    },
+    "nodeStatuses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/NodeStatus"
+      },
+      "description": "Status information for individual nodes",
+      "default": []
+    }
+  },
+  "definitions": {
+    "Coordinates": {
+      "type": "object",
+      "required": ["longitude", "latitude"],
+      "properties": {
+        "longitude": {
+          "type": "number",
+          "description": "Longitude coordinate"
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Latitude coordinate"
+        },
+        "elevationInMeters": {
+          "type": ["number", "null"],
+          "description": "Elevation measurement in meters"
+        }
+      }
+    },
+    "NodeStatus": {
+      "type": "object",
+      "properties": {
+        "axis": {
+          "type": ["string", "null"],
+          "description": "Axis identifier (V, L, or T) for vibration sensors",
+          "enum": ["V", "L", "T", null]
+        },
+        "active": {
+          "type": ["boolean", "null"],
+          "description": "Indicates if the node is active"
+        }
+      }
+    }
+  }
+}
