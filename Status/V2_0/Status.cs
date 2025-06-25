@@ -7,6 +7,7 @@ public class Status
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; } = "2.0";
     [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
+    [JsonPropertyName("temperatureCelsius")] public double? TemperatureCelsius { get; set; }
     [JsonPropertyName("batteryLevelVoltage")] public double? BatteryLevelVoltage { get; set; }
     [JsonPropertyName("batteryLevelPercentage")] public double? BatteryLevelPercentage { get; set; }
     [JsonPropertyName("signalStrength")] public double? SignalStrength { get; set; }
