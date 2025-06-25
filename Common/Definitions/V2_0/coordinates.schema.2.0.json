@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Coordinates",
+  "description": "Geographic coordinates with optional elevation",
+  "type": "object",
+  "properties": {
+    "longitude": {
+      "type": "number",
+      "description": "Longitude in decimal degrees"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "Latitude in decimal degrees"
+    },
+    "elevationInMeters": {
+      "type": ["number", "null"],
+      "description": "Elevation in meters above sea level"
+    }
+  },
+  "required": [
+    "longitude",
+    "latitude"
+  ],
+  "additionalProperties": false
+}

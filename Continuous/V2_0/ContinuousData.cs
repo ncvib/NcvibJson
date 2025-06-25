@@ -1,20 +1,19 @@
 using System.Text.Json.Serialization;
+using NcvibJson.Common.Definitions.V2_0;
 
 namespace NcvibJson.Continuous.V2_0;
 
 public class ContinuousData
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; }
-    [JsonPropertyName("instrumentCompany")] public required string InstrumentCompany { get; set; }
-    [JsonPropertyName("instrumentType")] public required string InstrumentType { get; set; }
-    [JsonPropertyName("serialNumber")]public required int SerialNumber { get; set; }
+    [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
     [JsonPropertyName("sensorType")] public string? SensorType { get; set; }
     [JsonPropertyName("port")]public required int Port { get; set; } // NorSonic Channel
     [JsonPropertyName("startTime")] public required DateTimeOffset StartTime { get; set; }
     [JsonPropertyName("intervalTimeInSeconds")] public required int IntervalTimeInSeconds { get; set; }
     [JsonPropertyName("quantity")]public required string Quantity { get; set; }
     [JsonPropertyName("unit")]public required string  Unit { get; set; } // m/s, m/s^2, etc.
-    [JsonPropertyName("axes")] public List<string>? Axes { get; set; }
+    [JsonPropertyName("axes")] public List<Axis>? Axes { get; set; }
 
     [JsonPropertyName("samples")] public required List<Sample> Samples { get; set; } = [];
 

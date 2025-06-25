@@ -1,16 +1,20 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Configuration",
+  "description": "Configuration for the NcvibJson system",
   "type": "object",
   "required": [
     "formatVersion",
-    "instrumentIanaTimezone"
+    "instrument"
   ],
   "properties": {
     "formatVersion": {
       "type": "string",
-      "const": "2.0",
-      "description": "Configuration format version"
+      "const": "2.0"
+    },
+    "instrument": {
+      "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
+      "description": "The instrument definition"
     },
     "instrumentIanaTimezone": {
       "type": "string",
@@ -24,7 +28,7 @@
         "minimum": 0,
         "maximum": 23
       },
-      "description": "List of hours (0-23) when the instrument is active",
+      "description": "Hours of the day (0-23) when the system is active",
       "default": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
     },
     "nodeConfigurations": {
@@ -32,44 +36,47 @@
       "items": {
         "$ref": "#/definitions/NodeConfiguration"
       },
-      "description": "Array of configuration settings for nodes",
+      "description": "Configuration settings for individual nodes",
       "default": []
     }
   },
+  "additionalProperties": false,
   "definitions": {
     "NodeConfiguration": {
       "type": "object",
       "properties": {
         "axis": {
-          "type": ["string", "null"],
-          "description": "Axis identifier (V, L, or T) for vibration sensors",
-          "enum": ["V", "L", "T", null]
+          "$ref": "../../Common/Definitions/V2_0/axis.schema.2.0.json",
+          "description": "The axis orientation of the node"
         },
         "standard": {
           "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json",
-          "description": "Standard filter configuration"
+          "description": "The standard filter to apply"
         },
         "intervalPeriodInSeconds": {
           "type": "integer",
-          "description": "Interval period in seconds",
-          "default": 120
+          "description": "Time interval between measurements in seconds",
+          "default": 120,
+          "minimum": 1
         },
         "recordingPeriodInSeconds": {
           "type": "integer",
-          "description": "Recording period in seconds",
-          "default": 5
+          "description": "Duration of each recording in seconds",
+          "default": 5,
+          "minimum": 1
         },
         "threshold": {
           "type": "number",
-          "description": "Threshold value",
+          "description": "Threshold value for measurements",
           "default": 1.0
         },
         "thresholdActive": {
           "type": "boolean",
-          "description": "Indication if threshold is active",
-          "default": true
+          "description": "Whether the threshold filter is active",
+          "default": false
         }
-      }
+      },
+      "additionalProperties": false
     }
   }
 }

@@ -1,12 +1,11 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "TriggeredData",
+  "description": "Triggered measurement data from an instrument",
   "type": "object",
   "required": [
     "formatVersion",
-    "instrumentCompany",
-    "instrumentType",
-    "serialNumber",
+    "instrument",
     "measuredQuantity",
     "measuredUnit",
     "startTime",
@@ -19,161 +18,180 @@
       "type": "string",
       "const": "2.0"
     },
-    "instrumentCompany": {
-      "type": "string"
-    },
-    "instrumentType": {
-      "type": "string",
-      "description": "LoggerType"
-    },
-    "serialNumber": {
-      "type": "string"
+    "instrument": {
+      "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
+      "description": "The instrument definition"
     },
     "sensorType": {
-      "type": "string",
-      "nullable": true
+      "type": ["string", "null"],
+      "description": "Type of sensor used for measurements"
     },
     "port": {
-      "type": "integer",
-      "nullable": true
+      "type": ["integer", "null"],
+      "description": "Port number used for measurements",
+      "default": 0
     },
-    "coordinate": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
-      "nullable": true
+    "coordinates": {
+      "$ref": "../../Common/Definitions/V2_0/coordinates.schema.2.0.json",
+      "description": "Geographical coordinates of the instrument"
     },
     "battery": {
-      "type": "string",
-      "nullable": true
+      "type": ["string", "null"],
+      "description": "Battery status or level"
     },
     "temperature": {
-      "type": "string",
-      "nullable": true
+      "type": ["string", "null"],
+      "description": "Temperature reading"
     },
     "overload": {
-      "type": "boolean",
-      "nullable": true
+      "type": ["boolean", "null"],
+      "description": "Whether the sensor experienced an overload condition"
     },
     "filteredSamples": {
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Whether the samples have been filtered"
     },
     "standard": {
-      "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json"
+      "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json",
+      "description": "Standard filter applied to measurements"
     },
     "measuredQuantity": {
-      "type": "string",
-      "enum": [
-        "Velocity",
-        "Acceleration",
-        "Displacement"
-      ]
+      "$ref": "#/definitions/MeasuredQuantityType",
+      "description": "Type of physical quantity being measured"
     },
     "measuredUnit": {
-      "type": "string"
+      "type": "string",
+      "description": "Unit of the measured quantity"
     },
     "measuredMaxValue": {
       "type": "array",
       "items": {
         "type": "number"
-      }
+      },
+      "description": "Maximum values of measurements",
+      "default": []
     },
     "peakParticleVelocity": {
       "type": "array",
       "items": {
         "type": "number"
-      }
+      },
+      "description": "Peak particle velocity values",
+      "default": []
     },
     "peakParticleVelocityUnit": {
-      "type": "string"
+      "type": ["string", "null"],
+      "description": "Unit for peak particle velocity",
+      "default": "mm/s"
     },
     "peakParticleAcceleration": {
       "type": "array",
       "items": {
         "type": "number"
-      }
+      },
+      "description": "Peak particle acceleration values",
+      "default": []
     },
     "peakParticleAccelerationUnit": {
-      "type": "string"
+      "type": ["string", "null"],
+      "description": "Unit for peak particle acceleration",
+      "default": "mm/s^2"
     },
     "peakParticleDisplacement": {
       "type": "array",
       "items": {
         "type": "number"
-      }
+      },
+      "description": "Peak particle displacement values",
+      "default": []
     },
     "peakParticleDisplacementUnit": {
-      "type": "string"
+      "type": ["string", "null"],
+      "description": "Unit for peak particle displacement",
+      "default": "mm"
     },
     "zeroCuttingFrequencyVelocity": {
       "type": "array",
       "items": {
         "type": "number"
-      }
+      },
+      "description": "Zero cutting frequency for velocity",
+      "default": []
     },
     "zeroCuttingFrequencyVelocityUnit": {
-      "type": "string",
+      "type": ["string", "null"],
+      "description": "Unit for zero cutting frequency velocity",
       "default": "Hz"
     },
     "zeroCuttingFrequencyAcceleration": {
       "type": "array",
       "items": {
         "type": "number"
-      }
+      },
+      "description": "Zero cutting frequency for acceleration",
+      "default": []
     },
     "zeroCuttingFrequencyAccelerationUnit": {
-      "type": "string",
+      "type": ["string", "null"],
+      "description": "Unit for zero cutting frequency acceleration",
       "default": "Hz"
     },
     "startTime": {
       "type": "string",
-      "format": "date-time"
+      "format": "date-time",
+      "description": "Start time of the measurements"
     },
     "sampleRate": {
-      "type": "number"
+      "type": "number",
+      "description": "Rate at which samples are taken"
     },
     "numberOfPreTriggerSamples": {
       "type": "integer",
-      "minimum": 0
+      "description": "Number of samples recorded before the trigger event"
     },
     "axes": {
       "type": "array",
       "items": {
-        "type": "string"
+        "$ref": "../../Common/Definitions/V2_0/axis.schema.2.0.json"
       },
-      "nullable": true
+      "description": "Axes of measurement",
+      "default": []
     },
     "transformationMatrix": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "nullable": true
+      "description": "Matrix for coordinate transformation",
+      "default": []
     },
     "triggerLevel": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "nullable": true
+      "description": "Trigger level values",
+      "default": []
     },
     "triggerLevelUnit": {
-      "type": "string",
-      "nullable": true
+      "type": ["string", "null"],
+      "description": "Unit for trigger level values"
     },
     "maxSamples": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/sampleItem"
+        "$ref": "#/definitions/SampleItem"
       },
-      "nullable": true
+      "description": "Maximum sample values",
+      "default": []
     },
     "sampleUnits": {
       "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Units for the samples",
+      "default": []
     },
     "samples": {
       "type": "array",
@@ -182,11 +200,26 @@
         "items": {
           "type": "number"
         }
-      }
+      },
+      "description": "Collection of measurement samples",
+      "default": []
     }
   },
+  "additionalProperties": false,
   "definitions": {
-    "sampleItem": {
+    "MeasuredQuantityType": {
+      "type": "string",
+      "enum": [
+        "Velocity",
+        "Acceleration",
+        "Displacement",
+        "Voltage",
+        "SoundPressure",
+        "SoundIntensity"
+      ],
+      "description": "Types of physical quantities that can be measured"
+    },
+    "SampleItem": {
       "type": "object",
       "required": [
         "axis",
@@ -195,25 +228,31 @@
       ],
       "properties": {
         "axis": {
-          "type": "string"
+          "$ref": "../../Common/Definitions/V2_0/axis.schema.2.0.json",
+          "description": "Axis of the sample"
         },
         "quantity": {
-          "type": "string"
+          "type": "string",
+          "description": "Physical quantity being measured"
         },
         "unit": {
-          "type": "string"
+          "type": "string",
+          "description": "Unit of measurement"
         },
         "value": {
           "type": "array",
           "items": {
             "type": "number"
-          }
+          },
+          "description": "Sample values",
+          "default": []
         },
         "timeOffsetInSeconds": {
-          "type": "number",
-          "nullable": true
+          "type": ["number", "null"],
+          "description": "Time offset in seconds"
         }
-      }
+      },
+      "additionalProperties": false
     }
   }
 }

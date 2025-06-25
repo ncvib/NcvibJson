@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using NcvibJson.Common.Definitions.V2_0;
 using NcvibJson.Common.Standards.V2_0;
 
 namespace NcvibJson.Triggered.V2_0;
@@ -6,12 +7,10 @@ namespace NcvibJson.Triggered.V2_0;
 public class TriggeredData
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; } = "2.0";
-    [JsonPropertyName("instrumentCompany")]public required string InstrumentCompany { get; set; }
-    [JsonPropertyName("instrumentType")] public required string InstrumentType { get; set; }
-    [JsonPropertyName("serialNumber")] public required string SerialNumber { get; set; }
+    [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
     [JsonPropertyName("sensorType")] public string? SensorType { get; set; }
     [JsonPropertyName("port")] public int? Port { get; set; } = 0;
-    [JsonPropertyName("coordinate")] public List<double>? Coordinate { get; set; }
+    [JsonPropertyName("coordinates")] public Coordinates? Coordinates { get; set; }
     [JsonPropertyName("battery")] public string? Battery { get; set; }
     [JsonPropertyName("temperature")] public string? Temperature { get; set; }
     [JsonPropertyName("overload")] public bool? Overload { get; set; }
@@ -33,7 +32,7 @@ public class TriggeredData
     [JsonPropertyName("startTime")] public required DateTime StartTime { get; set; }
     [JsonPropertyName("sampleRate")] public required double SampleRate { get; set; }
     [JsonPropertyName("numberOfPreTriggerSamples")] public int NumberOfPreTriggerSamples { get; set; }
-    [JsonPropertyName("axes")] public List<string> Axes { get; set; } = [];
+    [JsonPropertyName("axes")] public List<Axis> Axes { get; set; } = [];
     [JsonPropertyName("transformationMatrix")] public List<double> TransformationMatrix { get; set; } = [];
     [JsonPropertyName("triggerLevel")] public List<double> TriggerLevel { get; set; } = [];
     [JsonPropertyName("triggerLevelUnit")] public string? TriggerLevelUnit { get; set; }
@@ -53,7 +52,7 @@ public class TriggeredData
 
     public class SampleItem
     {
-        [JsonPropertyName("axis")] public required string Axis { get; set; }
+        [JsonPropertyName("axis")] public required Axis Axis { get; set; }
         [JsonPropertyName("quantity")] public required string Quantity { get; set; }
         [JsonPropertyName("unit")] public required string Unit { get; set; }
         [JsonPropertyName("value")] public List<double> Value { get; set; } = [];

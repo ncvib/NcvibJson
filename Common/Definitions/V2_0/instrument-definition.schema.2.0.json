@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "InstrumentDefinition",
+  "description": "Defines an instrument with its company, type, and serial number",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "company",
+    "type",
+    "serialNumber"
+  ],
+  "properties": {
+    "formatVersion": {
+      "type": "string",
+      "const": "2.0",
+      "description": "The format version of the instrument definition",
+    },
+    "company": {
+      "type": "string",
+      "description": "The company that manufactured the instrument"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type or model of the instrument"
+    },
+    "serialNumber": {
+      "type": "integer",
+      "description": "The serial number of the instrument"
+    }
+  },
+  "additionalProperties": false
+}

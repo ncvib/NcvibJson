@@ -1,10 +1,12 @@
 ﻿using System.Text.Json.Serialization;
+using NcvibJson.Common.Definitions.V2_0;
 
 namespace NcvibJson.Status.V2_0;
 
 public class Status
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; } = "2.0";
+    [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
     [JsonPropertyName("batteryLevelVoltage")] public double? BatteryLevelVoltage { get; set; }
     [JsonPropertyName("batteryLevelPercentage")] public double? BatteryLevelPercentage { get; set; }
     [JsonPropertyName("signalStrength")] public double? SignalStrength { get; set; }
@@ -13,19 +15,21 @@ public class Status
     [JsonPropertyName("latestDataDeliveryInUtc")] public DateTimeOffset? LatestDataDeliveryInUtc { get; set; }
     [JsonPropertyName("monitoringActive")] public bool? MonitoringActive { get; set; }
     
-    [JsonPropertyName("position")] public Coordinates? Position { get; set; }
-    [JsonPropertyName("nodeStatuses")] public NodeStatus[] NodeStatuses { get; set; } = [];
+    [JsonPropertyName("coordinates")] public Coordinates? Coordinates { get; set; }
+    [JsonPropertyName("nodes")] public Node[] Nodes { get; set; } = [];
     
-    public class Coordinates
+    public class Node
     {
-        [JsonPropertyName("longitude")] public double Longitude { get; set; }
-        [JsonPropertyName("latitude")] public double Latitude { get; set; }
-        [JsonPropertyName("elevationInMeters")] public double? ElevationInMeters { get; set; }
+        [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
+        [JsonPropertyName("axis")] public Axis? Axis { get; set; }
+        [JsonPropertyName("status")] public NodeStatus? Status { get; set; }
     }
     
-    public class NodeStatus
+    public enum NodeStatus
     {
-        [JsonPropertyName("axis")] public string? Axis { get; set; }
-        [JsonPropertyName("active")] public bool? Active { get; set; }
-    }        
+        Unknown,
+        Active,
+        Inactive,
+        Lost
+    }
 }

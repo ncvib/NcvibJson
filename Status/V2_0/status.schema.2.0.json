@@ -1,17 +1,24 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Status",
+  "description": "Status information for an instrument",
   "type": "object",
-  "required": ["formatVersion"],
+  "required": [
+    "formatVersion",
+    "instrument"
+  ],
   "properties": {
     "formatVersion": {
       "type": "string",
-      "const": "2.0",
-      "description": "Format version of the status document"
+      "const": "2.0"
+    },
+    "instrument": {
+      "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
+      "description": "The instrument definition"
     },
     "batteryLevelVoltage": {
       "type": ["number", "null"],
-      "description": "Battery level in volts"
+      "description": "Battery level in voltage"
     },
     "batteryLevelPercentage": {
       "type": ["number", "null"],
@@ -19,74 +26,71 @@
     },
     "signalStrength": {
       "type": ["number", "null"],
-      "description": "Signal strength measurement"
+      "description": "Signal strength of the instrument"
     },
     "availableMemory": {
       "type": ["number", "null"],
-      "description": "Available memory measurement"
+      "description": "Available memory in the instrument"
     },
     "statusTimeInUtc": {
       "type": ["string", "null"],
       "format": "date-time",
-      "description": "Time of status report in UTC"
+      "description": "Time when the status was recorded in UTC"
     },
     "latestDataDeliveryInUtc": {
       "type": ["string", "null"],
       "format": "date-time",
-      "description": "Time of latest data delivery in UTC"
+      "description": "Time of the latest data delivery in UTC"
     },
     "monitoringActive": {
       "type": ["boolean", "null"],
-      "description": "Indicates if monitoring is currently active"
+      "description": "Whether monitoring is currently active"
     },
-    "position": {
-      "oneOf": [
-        { "$ref": "#/definitions/Coordinates" },
-        { "type": "null" }
-      ],
-      "description": "Geographic coordinates of the device"
+    "coordinates": {
+      "$ref": "../../Common/Definitions/V2_0/coordinates.schema.2.0.json",
+      "description": "Geographical coordinates of the instrument"
     },
-    "nodeStatuses": {
+    "nodes": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/NodeStatus"
+        "$ref": "#/definitions/Node"
       },
-      "description": "Status information for individual nodes",
+      "description": "Collection of connected nodes",
       "default": []
     }
   },
+  "additionalProperties": false,
   "definitions": {
-    "Coordinates": {
+    "Node": {
       "type": "object",
-      "required": ["longitude", "latitude"],
+      "required": [
+        "instrument"
+      ],
       "properties": {
-        "longitude": {
-          "type": "number",
-          "description": "Longitude coordinate"
+        "instrument": {
+          "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
+          "description": "The instrument definition for the node"
         },
-        "latitude": {
-          "type": "number",
-          "description": "Latitude coordinate"
+        "axis": {
+          "$ref": "../../Common/Definitions/V2_0/axis.schema.2.0.json",
+          "description": "Axis information for the node"
         },
-        "elevationInMeters": {
-          "type": ["number", "null"],
-          "description": "Elevation measurement in meters"
+        "status": {
+          "$ref": "#/definitions/NodeStatus",
+          "description": "Current status of the node"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "NodeStatus": {
-      "type": "object",
-      "properties": {
-        "axis": {
-          "type": ["string", "null"],
-          "description": "Axis identifier (V, L, or T) for vibration sensors",
-          "enum": ["V", "L", "T", null]
-        },
-        "active": {
-          "type": ["boolean", "null"],
-          "description": "Indicates if the node is active"
-        }
-      }
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Active",
+        "Inactive",
+        "Lost"
+      ],
+      "description": "Possible status values for a node"
     }
   }
 }

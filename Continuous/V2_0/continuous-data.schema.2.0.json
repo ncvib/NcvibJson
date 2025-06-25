@@ -1,12 +1,11 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ContinuousData",
+  "description": "Continuous data measurements from an instrument",
   "type": "object",
   "required": [
     "formatVersion",
-    "instrumentCompany",
-    "instrumentType",
-    "serialNumber",
+    "instrument",
     "port",
     "startTime",
     "intervalTimeInSeconds",
@@ -19,18 +18,13 @@
       "type": "string",
       "const": "2.0"
     },
-    "instrumentCompany": {
-      "type": "string"
-    },
-    "instrumentType": {
-      "type": "string"
-    },
-    "serialNumber": {
-      "type": "integer"
+    "instrument": {
+      "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
+      "description": "The instrument definition"
     },
     "sensorType": {
       "type": "string",
-      "nullable": true
+      "description": "Type of sensor used for measurements"
     },
     "port": {
       "type": "integer",
@@ -38,34 +32,41 @@
     },
     "startTime": {
       "type": "string",
-      "format": "date-time"
+      "format": "date-time",
+      "description": "Start time of the measurements"
     },
     "intervalTimeInSeconds": {
-      "type": "integer"
+      "type": "integer",
+      "description": "Time interval between measurements in seconds",
+      "minimum": 1
     },
     "quantity": {
-      "type": "string"
+      "type": "string",
+      "description": "The physical quantity being measured"
     },
     "unit": {
       "type": "string",
-      "description": "m/s, m/s^2, etc."
+      "description": "Unit of measurement (e.g., m/s, m/s^2)"
     },
     "axes": {
       "type": "array",
       "items": {
-        "type": "string"
+        "$ref": "../../Common/Definitions/V2_0/axis.schema.2.0.json"
       },
-      "nullable": true
+      "description": "List of axes for the measurements"
     },
     "samples": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/sample"
-      }
+        "$ref": "#/definitions/Sample"
+      },
+      "description": "Collection of measurement samples",
+      "default": []
     }
   },
+  "additionalProperties": false,
   "definitions": {
-    "sample": {
+    "Sample": {
       "type": "object",
       "required": [
         "time",
@@ -74,16 +75,18 @@
       "properties": {
         "time": {
           "type": "string",
-          "format": "date-time"
+          "description": "Timestamp of the sample"
         },
         "values": {
           "type": "array",
           "items": {
-            "type": "number",
-            "format": "double"
-          }
+            "type": "number"
+          },
+          "description": "Measured values",
+          "default": []
         }
-      }
+      },
+      "additionalProperties": false
     }
   }
 }
