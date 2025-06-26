@@ -6,5 +6,5 @@ public enum Axis
 {
     [JsonPropertyName("V")] Vertical,
     [JsonPropertyName("L")] Longitudinal,
-    [JsonPropertyName("T")] Horizontal
+    [JsonPropertyName("T")] Transversal
 }
