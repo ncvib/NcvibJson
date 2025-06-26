@@ -41,7 +41,7 @@ public class SchemaValidator : ISchemaValidator
     
     public bool ValidateJson(string jsonContent, SchemaType schemaType)
     {
-        var schemaFilePath = GetSchemaFilePath(_tempSchemasDir, schemaType);
+        var schemaFilePath = GetSchemaFilePath(schemaType);
         
         try
         {
@@ -94,37 +94,24 @@ public class SchemaValidator : ISchemaValidator
             Directory.CreateDirectory(_tempSchemasDir);
         
             var assembly = typeof(SchemaValidator).Assembly;
-            var resourceNames = FindAllEmbeddedJsonSchemasInAssembly(assembly);
-            
-            foreach (var resourceName in resourceNames)
+            var assemblyName = assembly.GetName().Name;
+        
+            foreach (SchemaType schemaType in Enum.GetValues(typeof(SchemaType)))
             {
-                var relativePath = resourceName;
-                var assemblyName = assembly.GetName().Name;
-                
-                if (resourceName.StartsWith($"{assemblyName}."))
+                var outputPath = GetSchemaFilePath(schemaType);
+
+                if (File.Exists(outputPath))
                 {
-                    relativePath = resourceName.Substring(assemblyName.Length + 1);
+                    continue;
                 }
                 
-                var pathParts = relativePath.Split('.');
-                var directory = string.Join(Path.DirectorySeparatorChar.ToString(), pathParts.Take(pathParts.Length - 2));
-                var fileName = string.Join(".", pathParts.Skip(pathParts.Length - 2));
-                var outputPath = Path.Combine(_tempSchemasDir, directory, fileName);
-                
-                if (!File.Exists(outputPath))
-                {
-                    ExtractSchemaResource(assembly, resourceName, outputPath);
-                }
+                var relativePath = outputPath.Substring(_tempSchemasDir.Length).TrimStart(Path.DirectorySeparatorChar);
+                var resourcePath = relativePath.Replace(Path.DirectorySeparatorChar, '.');
+                var resourceName = $"{assemblyName}.{resourcePath}";
+                    
+                ExtractSchemaResource(assembly, resourceName, outputPath);
             }
         }
-    }
-
-    private static List<string> FindAllEmbeddedJsonSchemasInAssembly(Assembly assembly)
-    {
-        return assembly
-            .GetManifestResourceNames()
-            .Where(name => name.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
-            .ToList();
     }
 
     private void ExtractSchemaResource(Assembly assembly, string resourceName, string outputPath)
@@ -150,17 +137,17 @@ public class SchemaValidator : ISchemaValidator
         }
     }
     
-    private string GetSchemaFilePath(string basePath, SchemaType schemaType)
+    private string GetSchemaFilePath(SchemaType schemaType)
     {
         return schemaType switch
         {
-            SchemaType.ContinuousData => Path.Combine(basePath, "Continuous", "V2_0", "continuous-data.schema.2.0.json"),
-            SchemaType.TriggeredData => Path.Combine(basePath, "Triggered", "V2_0", "triggered-data.schema.2.0.json"),
-            SchemaType.Standards => Path.Combine(basePath, "Common", "Standards", "V2_0", "standards.schema.2.0.json"),
-            SchemaType.Axis => Path.Combine(basePath, "Common", "Definitions", "V2_0", "axis.schema.2.0.json"),
-            SchemaType.Coordinates => Path.Combine(basePath, "Common", "Definitions", "V2_0", "coordinates.schema.2.0.json"),
-            SchemaType.InstrumentDefinition => Path.Combine(basePath, "Common", "Definitions", "V2_0", "instrument-definition.schema.2.0.json"),
-            SchemaType.TriggeredDataV1 => Path.Combine(basePath, "Triggered", "V0_1", "triggered-data.schema.1.0.json"),
+            SchemaType.ContinuousData => Path.Combine(_tempSchemasDir, "Continuous", "V2_0", "continuous-data.schema.2.0.json"),
+            SchemaType.TriggeredData => Path.Combine(_tempSchemasDir, "Triggered", "V2_0", "triggered-data.schema.2.0.json"),
+            SchemaType.Standards => Path.Combine(_tempSchemasDir, "Common", "Standards", "V2_0", "standards.schema.2.0.json"),
+            SchemaType.Axis => Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "axis.schema.2.0.json"),
+            SchemaType.Coordinates => Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "coordinates.schema.2.0.json"),
+            SchemaType.InstrumentDefinition => Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "instrument-definition.schema.2.0.json"),
+            SchemaType.TriggeredDataV1 => Path.Combine(_tempSchemasDir, "Triggered", "V0_1", "triggered-data.schema.1.0.json"),
             _ => throw new ArgumentException($"Unknown schema type: {schemaType}")
         };
     }
