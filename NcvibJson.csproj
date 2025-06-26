@@ -26,6 +26,12 @@
     <EmbeddedResource Include="Triggered\V1_0\triggered-data.schema.1.0.json" />
     <None Remove="Triggered\V2_0\triggered-data.schema.2.0.json" />
     <EmbeddedResource Include="Triggered\V2_0\triggered-data.schema.2.0.json" />
+    <None Remove="Common\Definitions\V2_0\axis.schema.2.0.json" />
+    <EmbeddedResource Include="Common\Definitions\V2_0\axis.schema.2.0.json" />
+    <None Remove="Common\Definitions\V2_0\coordinates.schema.2.0.json" />
+    <EmbeddedResource Include="Common\Definitions\V2_0\coordinates.schema.2.0.json" />
+    <None Remove="Common\Definitions\V2_0\instrument-definition.schema.2.0.json" />
+    <EmbeddedResource Include="Common\Definitions\V2_0\instrument-definition.schema.2.0.json" />
   </ItemGroup>
 
 </Project>

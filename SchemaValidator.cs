@@ -103,6 +103,15 @@ public class SchemaValidator : ISchemaValidator
             
             ExtractSchemaResource(assembly, "NcvibJson.Common.Standards.V2_0.standards.schema.2.0.json", 
                 Path.Combine(_tempSchemasDir, "Common", "Standards", "V2_0", "standards.schema.2.0.json"));
+            
+            ExtractSchemaResource(assembly, "NcvibJson.Common.Definitions.V2_0.axis.schema.2.0.json", 
+                Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "axis.schema.2.0.json"));
+            
+            ExtractSchemaResource(assembly, "NcvibJson.Common.Standards.V2_0.coordinates.schema.2.0.json", 
+                Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "coordinates.schema.2.0.json"));
+            
+            ExtractSchemaResource(assembly, "NcvibJson.Common.Standards.V2_0.instrument-definition.schema.2.0.json", 
+                Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "instrument-definition.schema.2.0.json"));            
                 
             ExtractSchemaResource(assembly, "NcvibJson.Triggered.V2_0.triggered-data.schema.2.0.json", 
                 Path.Combine(_tempSchemasDir, "Triggered", "V2_0", "triggered-data.schema.2.0.json"));
@@ -145,6 +154,9 @@ public class SchemaValidator : ISchemaValidator
             SchemaType.ContinuousData => Path.Combine(basePath, "Continuous", "V2_0", "continuous-data.schema.2.0.json"),
             SchemaType.TriggeredData => Path.Combine(basePath, "Triggered", "V2_0", "triggered-data.schema.2.0.json"),
             SchemaType.Standards => Path.Combine(basePath, "Common", "Standards", "V2_0", "standards.schema.2.0.json"),
+            SchemaType.Axis => Path.Combine(basePath, "Common", "Definitions", "V2_0", "axis.schema.2.0.json"),
+            SchemaType.Coordinates => Path.Combine(basePath, "Common", "Definitions", "V2_0", "coordinates.schema.2.0.json"),
+            SchemaType.InstrumentDefinition => Path.Combine(basePath, "Common", "Definitions", "V2_0", "instrument-definition.schema.2.0.json"),
             SchemaType.TriggeredDataV1 => Path.Combine(basePath, "Triggered", "V0_1", "triggered-data.schema.1.0.json"),
             _ => throw new ArgumentException($"Unknown schema type: {schemaType}")
         };
@@ -156,5 +168,8 @@ public enum SchemaType
     ContinuousData,
     TriggeredData,
     Standards,
-    TriggeredDataV1
+    TriggeredDataV1,
+    Axis,
+    Coordinates,
+    InstrumentDefinition
 }
