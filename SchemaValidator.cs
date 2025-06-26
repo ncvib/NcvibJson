@@ -14,6 +14,7 @@ public class SchemaValidator : ISchemaValidator
     {
         var assembly = typeof(SchemaValidator).Assembly;
         _tempSchemasDir = Path.Combine(Path.GetTempPath(),$"NcvibJson-Schemas-{assembly.GetName().Version}");
+        EnsureSchemaFilesExtracted();
     }
 
     public bool ValidateJson(string jsonContent, string schemaPath)
@@ -45,8 +46,6 @@ public class SchemaValidator : ISchemaValidator
         
         try
         {
-            EnsureSchemaFilesExtracted();
-
             return ValidateJson(jsonContent, schemaFilePath);
         }
         catch (Exception ex)
@@ -92,38 +91,42 @@ public class SchemaValidator : ISchemaValidator
     {
         lock (_lockObject)
         {
-            if (Directory.Exists(_tempSchemasDir) && Directory.GetFiles(_tempSchemasDir, "*.json", SearchOption.AllDirectories).Length > 0)
-            {
-                return;
-            }
-            
             Directory.CreateDirectory(_tempSchemasDir);
-            
+        
             var assembly = typeof(SchemaValidator).Assembly;
+            var resourceNames = FindAllEmbeddedJsonSchemasInAssembly(assembly);
             
-            ExtractSchemaResource(assembly, "NcvibJson.Common.Standards.V2_0.standards.schema.2.0.json", 
-                Path.Combine(_tempSchemasDir, "Common", "Standards", "V2_0", "standards.schema.2.0.json"));
-            
-            ExtractSchemaResource(assembly, "NcvibJson.Common.Definitions.V2_0.axis.schema.2.0.json", 
-                Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "axis.schema.2.0.json"));
-            
-            ExtractSchemaResource(assembly, "NcvibJson.Common.Standards.V2_0.coordinates.schema.2.0.json", 
-                Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "coordinates.schema.2.0.json"));
-            
-            ExtractSchemaResource(assembly, "NcvibJson.Common.Standards.V2_0.instrument-definition.schema.2.0.json", 
-                Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "instrument-definition.schema.2.0.json"));            
+            foreach (var resourceName in resourceNames)
+            {
+                var relativePath = resourceName;
+                var assemblyName = assembly.GetName().Name;
                 
-            ExtractSchemaResource(assembly, "NcvibJson.Triggered.V2_0.triggered-data.schema.2.0.json", 
-                Path.Combine(_tempSchemasDir, "Triggered", "V2_0", "triggered-data.schema.2.0.json"));
+                if (resourceName.StartsWith($"{assemblyName}."))
+                {
+                    relativePath = resourceName.Substring(assemblyName.Length + 1);
+                }
                 
-            ExtractSchemaResource(assembly, "NcvibJson.Continuous.V2_0.continuous-data.schema.2.0.json", 
-                Path.Combine(_tempSchemasDir, "Continuous", "V2_0", "continuous-data.schema.2.0.json"));
+                var pathParts = relativePath.Split('.');
+                var directory = string.Join(Path.DirectorySeparatorChar.ToString(), pathParts.Take(pathParts.Length - 2));
+                var fileName = string.Join(".", pathParts.Skip(pathParts.Length - 2));
+                var outputPath = Path.Combine(_tempSchemasDir, directory, fileName);
                 
-            ExtractSchemaResource(assembly, "NcvibJson.Triggered.V0_1.triggered-data.schema.1.0.json", 
-                Path.Combine(_tempSchemasDir, "Triggered", "V0_1", "triggered-data.schema.1.0.json"));
+                if (!File.Exists(outputPath))
+                {
+                    ExtractSchemaResource(assembly, resourceName, outputPath);
+                }
+            }
         }
     }
-    
+
+    private static List<string> FindAllEmbeddedJsonSchemasInAssembly(Assembly assembly)
+    {
+        return assembly
+            .GetManifestResourceNames()
+            .Where(name => name.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
+
     private void ExtractSchemaResource(Assembly assembly, string resourceName, string outputPath)
     {
         try
@@ -161,15 +164,4 @@ public class SchemaValidator : ISchemaValidator
             _ => throw new ArgumentException($"Unknown schema type: {schemaType}")
         };
     }
-}
-
-public enum SchemaType
-{
-    ContinuousData,
-    TriggeredData,
-    Standards,
-    TriggeredDataV1,
-    Axis,
-    Coordinates,
-    InstrumentDefinition
 }

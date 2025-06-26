@@ -9,3 +9,5 @@ Ncvib json is a format for integration of triggered and continuous values from v
 
 ## Continuous
 * V2_0 initial version for continuous data (interval values). Still in preview.
+
+Note: Remember to add schema type to enum SchemaType if a new schema is created
