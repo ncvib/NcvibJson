@@ -3,5 +3,5 @@
   "title": "Axis",
   "description": "Defines the axis orientation (V=Vertical, L=Longitudinal, T=Horizontal/Transverse)",
   "type": "string",
-  "enum": ["V", "L", "T"]
+  "enum": ["V", "L", "T", "Vertical", "Longitudinal", "Transversal"]
 }
