@@ -14,6 +14,8 @@ public class SchemaValidator : ISchemaValidator
     {
         var assembly = typeof(SchemaValidator).Assembly;
         _tempSchemasDir = Path.Combine(Path.GetTempPath(),$"NcvibJson-Schemas-{assembly.GetName().Version}");
+        
+        EnsureSchemaFilesExtracted();
     }
 
     public bool ValidateJson(string jsonContent, string schemaPath)
@@ -45,7 +47,6 @@ public class SchemaValidator : ISchemaValidator
         
         try
         {
-            EnsureSchemaFilesExtracted();
             return ValidateJson(jsonContent, schemaFilePath);
         }
         catch (Exception ex)
@@ -91,6 +92,7 @@ public class SchemaValidator : ISchemaValidator
     {
         lock (_lockObject)
         {
+            Directory.Delete(_tempSchemasDir, recursive: true);
             Directory.CreateDirectory(_tempSchemasDir);
         
             var assembly = typeof(SchemaValidator).Assembly;
