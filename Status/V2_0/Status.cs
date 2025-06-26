@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using NcvibJson.Common.Definitions.V2_0;
 
 namespace NcvibJson.Status.V2_0;
@@ -26,11 +27,12 @@ public class Status
         [JsonPropertyName("status")] public NodeStatus? Status { get; set; }
     }
     
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum NodeStatus
     {
-        Unknown,
-        Active,
-        Inactive,
-        Lost
+        [EnumMember(Value = "Unknown")] Unknown,
+        [EnumMember(Value = "Active")] Active,
+        [EnumMember(Value = "Inactive")] Inactive,
+        [EnumMember(Value = "Lost")] Lost
     }
 }

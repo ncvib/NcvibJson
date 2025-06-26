@@ -32,7 +32,10 @@
       "default": 0
     },
     "coordinates": {
-      "$ref": "../../Common/Definitions/V2_0/coordinates.schema.2.0.json",
+      "oneOf": [
+        { "$ref": "../../Common/Definitions/V2_0/coordinates.schema.2.0.json" },
+        { "type": "null" }
+      ],
       "description": "Geographical coordinates of the instrument"
     },
     "battery": {
@@ -52,7 +55,10 @@
       "description": "Whether the samples have been filtered"
     },
     "standard": {
-      "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json",
+      "oneOf": [
+        { "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json" },
+        { "type": "null" }
+      ],
       "description": "Standard filter applied to measurements"
     },
     "measuredQuantity": {

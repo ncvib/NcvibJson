@@ -51,7 +51,10 @@
       "description": "Whether monitoring is currently active"
     },
     "coordinates": {
-      "$ref": "../../Common/Definitions/V2_0/coordinates.schema.2.0.json",
+      "oneOf": [
+        { "$ref": "../../Common/Definitions/V2_0/coordinates.schema.2.0.json" },
+        { "type": "null" }
+      ],
       "description": "Geographical coordinates of the instrument"
     },
     "nodes": {
@@ -76,7 +79,10 @@
           "description": "The instrument definition for the node"
         },
         "axis": {
-          "$ref": "../../Common/Definitions/V2_0/axis.schema.2.0.json",
+          "oneOf": [
+            { "$ref": "../../Common/Definitions/V2_0/axis.schema.2.0.json" },
+            { "type": "null" }
+          ],
           "description": "Axis information for the node"
         },
         "status": {

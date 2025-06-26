@@ -46,11 +46,17 @@
       "type": "object",
       "properties": {
         "axis": {
-          "$ref": "../../Common/Definitions/V2_0/axis.schema.2.0.json",
-          "description": "The axis orientation of the node"
+          "oneOf": [
+            { "$ref": "../../Common/Definitions/V2_0/axis.schema.2.0.json" },
+            { "type": "null" }
+          ],
+          "description": "Axis information for the node"
         },
         "standard": {
-          "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json",
+          "oneOf": [
+            { "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json" },
+            { "type": "null" }
+          ],
           "description": "The standard filter to apply"
         },
         "intervalPeriodInSeconds": {
