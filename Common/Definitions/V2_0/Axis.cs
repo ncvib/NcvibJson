@@ -1,10 +1,10 @@
-using System.Text.Json.Serialization;
+using System.Runtime.Serialization;
 
 namespace NcvibJson.Common.Definitions.V2_0;
 
 public enum Axis
 {
-    [JsonPropertyName("V")] Vertical,
-    [JsonPropertyName("L")] Longitudinal,
-    [JsonPropertyName("T")] Transversal
+    [EnumMember(Value = "V")] Vertical,
+    [EnumMember(Value = "L")] Longitudinal,
+    [EnumMember(Value = "T")] Transversal
 }
