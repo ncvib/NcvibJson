@@ -147,7 +147,7 @@ public class SchemaValidator : ISchemaValidator
             SchemaType.Axis => Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "axis.schema.2.0.json"),
             SchemaType.Coordinates => Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "coordinates.schema.2.0.json"),
             SchemaType.InstrumentDefinition => Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "instrument-definition.schema.2.0.json"),
-            SchemaType.TriggeredDataV1 => Path.Combine(_tempSchemasDir, "Triggered", "V0_1", "triggered-data.schema.1.0.json"),
+            SchemaType.TriggeredDataV1 => Path.Combine(_tempSchemasDir, "Triggered", "V1_0", "triggered-data.schema.1.0.json"),
             _ => throw new ArgumentException($"Unknown schema type: {schemaType}")
         };
     }
