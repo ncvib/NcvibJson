@@ -6,7 +6,7 @@ NcvibJson is essentially a group of schemas for integration of vibration sensors
 * Instrument configuration => To instrument
 * Instrument status => From Instrument
 
-There are also some common sub-schemas to not repeat reusable structures:
+There are also some common sub-schemas used to not repeat reusable structures:
 * Axis - V or Vertical, L or Longitudinal, T or Transversal
 * Coordinates - Longitude, Latitude and optional Elevation
 * Instrument-Definition - Supplier Company, Instrument Type and SerialNumber
