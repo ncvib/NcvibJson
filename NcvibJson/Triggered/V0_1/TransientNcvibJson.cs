@@ -3,16 +3,16 @@ namespace NcvibJson.Triggered.V0_1
     public class TransientNcvibJson
     {
         public string FormatVersion { get; } = "1";
-        public string SensorCompany { get; set; }
-        public string SensorType { get; set; }
+        public required string SensorCompany { get; set; }
+        public required string SensorType { get; set; }
         public int SerialNumber { get; set; }
         public int? Port { get; set; }
         public DateTimeOffset Time { get; set; }
-        public string MeasuredEntity { get; set; }
+        public required string MeasuredEntity { get; set; }
         public List<double> MeasuredMaxValue { get; set; } = new List<double>();
-        public string MeasuredUnit { get; set; }
+        public required string MeasuredUnit { get; set; }
 
-        public string HashId { get; set; }
+        public required string HashId { get; set; }
 
         public List<double> Coordinate { get; set; } = new List<double>();
         public double? Battery { get; set; }
@@ -24,13 +24,13 @@ namespace NcvibJson.Triggered.V0_1
 
         public List<double> PeakParticleVelocity { get; set; } = new List<double>();
         public float? VectorPeakParticleVelocity { get; set; }
-        public string PeakParticleVelocityUnit { get; set; }
+        public required string PeakParticleVelocityUnit { get; set; }
 
         public List<double> PeakParticleAcceleration { get; set; } = new List<double>();
-        public string PeakParticleAccelerationUnit { get; set; }
+        public required string PeakParticleAccelerationUnit { get; set; }
 
         public List<double> PeakParticleDisplacement { get; set; } = new List<double>();
-        public string PeakParticleDisplacementUnit { get; set; }
+        public required string PeakParticleDisplacementUnit { get; set; }
 
         public List<double> ZeroCuttingFrequencyVelocity { get; set; } = new List<double>();
         public List<double> ZeroCuttingFrequencyAcceleration { get; set; } = new List<double>();

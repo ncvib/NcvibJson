@@ -2,7 +2,9 @@ namespace NcvibJson.Common.Standards.V2_0;
 
 public static class PredefinedFilters
 {
-    private static readonly Dictionary<PredefinedFilterType, StandardFilter> Filters = new Dictionary<PredefinedFilterType, StandardFilter>
+    public static Dictionary<PredefinedFilterType, StandardFilter> GetAllFilters() => Filters;
+
+    private static Dictionary<PredefinedFilterType, StandardFilter> Filters => new()
     {
         {
             PredefinedFilterType.Unknown, new StandardFilter
@@ -49,7 +51,7 @@ public static class PredefinedFilters
         {
             PredefinedFilterType.NORMS9012, new StandardFilter
             {
-                Name = "?NORM S 9012",
+                Name = "ÖNORM S 9012",
                 FilterDefinition = new FilterDefinition {LowPass = 1, HighPass = 80}
             }
         },

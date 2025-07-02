@@ -10,7 +10,7 @@
   "properties": {
     "formatVersion": {
       "type": "string",
-      "const": "2.0"
+      "enum": ["2.0"]
     },
     "instrument": {
       "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",

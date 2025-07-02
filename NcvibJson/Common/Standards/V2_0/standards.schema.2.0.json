@@ -14,10 +14,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 0
+              "enum": [0]
             },
             "highPass": {
-              "const": 1000
+              "enum": [1000]
             }
           },
           "required": [
@@ -42,10 +42,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 2
+              "enum": [2]
             },
             "highPass": {
-              "const": 250
+              "enum": [250]
             }
           },
           "required": [
@@ -70,10 +70,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 1
+              "enum": [1]
             },
             "highPass": {
-              "const": 315
+              "enum": [315]
             }
           },
           "required": [
@@ -98,10 +98,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 1
+              "enum": [1]
             },
             "highPass": {
-              "const": 80
+              "enum": [80]
             }
           },
           "required": [
@@ -126,10 +126,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 1
+              "enum": [1]
             },
             "highPass": {
-              "const": 300
+              "enum": [300]
             }
           },
           "required": [
@@ -154,10 +154,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 2
+              "enum": [2]
             },
             "highPass": {
-              "const": 250
+              "enum": [250]
             }
           },
           "required": [
@@ -182,10 +182,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 1
+              "enum": [1]
             },
             "highPass": {
-              "const": 80
+              "enum": [80]
             }
           },
           "required": [
@@ -210,10 +210,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 5
+              "enum": [5]
             },
             "highPass": {
-              "const": 300
+              "enum": [300]
             }
           },
           "required": [
@@ -238,10 +238,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 1
+              "enum": [1]
             },
             "highPass": {
-              "const": 15
+              "enum": [15]
             }
           },
           "required": [
@@ -266,10 +266,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 1
+              "enum": [1]
             },
             "highPass": {
-              "const": 80
+              "enum": [80]
             }
           },
           "required": [
@@ -294,10 +294,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 5
+              "enum": [5]
             },
             "highPass": {
-              "const": 300
+              "enum": [300]
             }
           },
           "required": [
@@ -322,10 +322,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 3
+              "enum": [3]
             },
             "highPass": {
-              "const": 400
+              "enum": [400]
             }
           },
           "required": [
@@ -350,10 +350,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 5
+              "enum": [5]
             },
             "highPass": {
-              "const": 312
+              "enum": [312]
             }
           },
           "required": [
@@ -378,10 +378,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 2
+              "enum": [2]
             },
             "highPass": {
-              "const": 150
+              "enum": [150]
             }
           },
           "required": [
@@ -406,10 +406,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 1
+              "enum": [1]
             },
             "highPass": {
-              "const": 80
+              "enum": [80]
             }
           },
           "required": [
@@ -434,10 +434,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 5
+              "enum": [5]
             },
             "highPass": {
-              "const": 500
+              "enum": [500]
             }
           },
           "required": [
@@ -462,10 +462,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 1
+              "enum": [1]
             },
             "highPass": {
-              "const": 150
+              "enum": [150]
             }
           },
           "required": [
@@ -490,10 +490,10 @@
           "type": "object",
           "properties": {
             "lowPass": {
-              "const": 5
+              "enum": [5]
             },
             "highPass": {
-              "const": 150
+              "enum": [150]
             }
           },
           "required": [

@@ -1,0 +1,26 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Predefined Filters",
+  "description": "Reusable enumeration for predefined filters",
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "ISEESeismograph",
+        "DIN41503",
+        "DIN41502KB",
+        "BS7385",
+        "AS21872_2006",
+        "NORMS9012",
+        "ISO8569Accel",
+        "IN1226",
+        "NS8176Komfort",
+        "NS8141Byggverk",
+        "NS8141_1_2012_A1_2013",
+        "SS4604866Sprang",
+        "SS025211Schakt",
+        "SS4604861Komfort",
+        "Geophone",
+        "ICPECirculaire86",
+        "SS25211Schakt5_150Hz"
+      ]
+}

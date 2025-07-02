@@ -146,6 +146,7 @@ public class SchemaValidator : ISchemaValidator
             SchemaType.ContinuousData => Path.Combine(_tempSchemasDir, "Continuous", "V2_0", "continuous-data.schema.2.0.json"),
             SchemaType.TriggeredData => Path.Combine(_tempSchemasDir, "Triggered", "V2_0", "triggered-data.schema.2.0.json"),
             SchemaType.Standards => Path.Combine(_tempSchemasDir, "Common", "Standards", "V2_0", "standards.schema.2.0.json"),
+            SchemaType.PredefinedFilters => Path.Combine(_tempSchemasDir, "Common", "Standards", "V2_0", "predefined-filters.schema.2.0.json"),
             SchemaType.Axis => Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "axis.schema.2.0.json"),
             SchemaType.Coordinates => Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "coordinates.schema.2.0.json"),
             SchemaType.InstrumentDefinition => Path.Combine(_tempSchemasDir, "Common", "Definitions", "V2_0", "instrument-definition.schema.2.0.json"),

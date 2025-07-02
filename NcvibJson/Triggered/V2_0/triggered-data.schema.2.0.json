@@ -16,7 +16,7 @@
   "properties": {
     "formatVersion": {
       "type": "string",
-      "const": "2.0"
+      "enum": ["2.0"]
     },
     "instrument": {
       "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
@@ -57,6 +57,7 @@
     "standard": {
       "oneOf": [
         { "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json" },
+        { "$ref": "../../Common/Standards/V2_0/predefined-filters.schema.2.0.json" },
         { "type": "null" }
       ],
       "description": "Standard filter applied to measurements"

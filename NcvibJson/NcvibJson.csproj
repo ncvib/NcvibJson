@@ -32,6 +32,8 @@
     <EmbeddedResource Include="Common\Definitions\V2_0\coordinates.schema.2.0.json" />
     <None Remove="Common\Definitions\V2_0\instrument-definition.schema.2.0.json" />
     <EmbeddedResource Include="Common\Definitions\V2_0\instrument-definition.schema.2.0.json" />
+    <None Remove="Common\Standards\V2_0\predefined-filters.schema.2.0.json" />
+    <EmbeddedResource Include="Common\Standards\V2_0\predefined-filters.schema.2.0.json" />
   </ItemGroup>
 
 </Project>
