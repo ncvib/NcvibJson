@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using NcvibJson.Common.Definitions.V2_0;
 
 namespace NcvibJson.Tests.Common.Definitions.V2_0;
 
