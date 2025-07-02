@@ -92,7 +92,11 @@ public class SchemaValidator : ISchemaValidator
     {
         lock (_lockObject)
         {
-            Directory.Delete(_tempSchemasDir, recursive: true);
+            if (Directory.Exists(_tempSchemasDir))
+            {
+                Directory.Delete(_tempSchemasDir, recursive: true);
+            }
+
             Directory.CreateDirectory(_tempSchemasDir);
         
             var assembly = typeof(SchemaValidator).Assembly;
