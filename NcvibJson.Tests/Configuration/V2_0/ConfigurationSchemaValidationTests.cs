@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using NcvibJson.Common.Standards.V2_0;
 
 namespace NcvibJson.Tests.Configuration.V2_0;
 
@@ -16,6 +17,39 @@ public class ConfigurationSchemaValidationTests : ConfigurationTests
         
         Assert.That(validationResult, Is.True);        
     }
+    
+    [Test]
+    public void ConfigurationJsonWithNodeHavingPredefinedFilterShouldPassValidation()
+    {
+        var filterTypes = 
+            Enum
+                .GetValues(typeof(PredefinedFilterType))
+                .Cast<PredefinedFilterType>();
+
+        foreach (var filterType in filterTypes)
+        {
+            var filter = PredefinedFilters.GetFilter(filterType);
+            
+            var configuration = CreateBasicConfiguration();
+            var node = new NcvibJson.Configuration.V2_0.Configuration.NodeConfiguration
+            {
+                Standard = filter
+            };
+            
+            configuration.NodeConfigurations = [node];
+
+            for (var index = 0; index < configuration.NodeConfigurations.Length; index++)
+            {
+                var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
+                serialized = TestJsonHelper.ReplaceValue(serialized, $"nodeConfigurations[{index}].standard", filterType.ToString());
+                Console.WriteLine(serialized);
+
+                var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
+
+                Assert.That(validationResult, Is.True);
+            }
+        }
+    }    
     
     [Test]
     public void ConfigurationJsonWithWrongVersionShouldNotPassValidation()

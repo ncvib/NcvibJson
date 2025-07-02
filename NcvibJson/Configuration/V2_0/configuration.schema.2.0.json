@@ -55,29 +55,7 @@
         "standard": {
           "oneOf": [
             { "$ref": "../../Common/Standards/V2_0/standards.schema.2.0.json" },
-            {
-              "type": "string",
-              "enum": [
-                "Unknown",
-                "ISEESeismograph",
-                "DIN41503",
-                "DIN41502KB",
-                "BS7385",
-                "AS21872_2006",
-                "NORMS9012",
-                "ISO8569Accel",
-                "IN1226",
-                "NS8176Komfort",
-                "NS8141Byggverk",
-                "NS8141_1_2012_A1_2013",
-                "SS4604866Sprang",
-                "SS025211Schakt",
-                "SS4604861Komfort",
-                "Geophone",
-                "ICPECirculaire86",
-                "SS25211Schakt5_150Hz"
-              ]
-            },
+            { "$ref": "../../Common/Standards/V2_0/predefined-filters.schema.2.0.json" },
             { "type": "null" }
           ],
           "description": "The standard filter to apply"
