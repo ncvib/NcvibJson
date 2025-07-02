@@ -7,7 +7,7 @@ namespace NcvibJson.Tests.Common.Standards.V2_0;
 public class StandardsSchemaValidationTests
 {
     private SchemaValidator _validator;
-    private readonly JsonSerializerOptions _jsonSerializerOptions = new() {WriteIndented = true, MaxDepth = 5, };
+    private readonly JsonSerializerOptions _jsonSerializerOptions = new() {WriteIndented = true };
 
     [SetUp]
     public void Setup()

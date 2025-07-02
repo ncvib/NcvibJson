@@ -6,7 +6,7 @@ namespace NcvibJson.Tests.Common.Definitions.V2_0;
 public class AxisSchemaValidationTests
 {
     protected SchemaValidator Validator;
-    protected readonly JsonSerializerOptions JsonSerializerOptions = new() {WriteIndented = true, MaxDepth = 5, };
+    protected readonly JsonSerializerOptions JsonSerializerOptions = new() {WriteIndented = true };
     
     [SetUp]
     public void Setup()
