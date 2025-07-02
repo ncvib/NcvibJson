@@ -8,6 +8,7 @@ public enum SchemaType
     PredefinedFilters,
     TriggeredDataV1,
     Axis,
+    Configuration,
     Coordinates,
     InstrumentDefinition
 }

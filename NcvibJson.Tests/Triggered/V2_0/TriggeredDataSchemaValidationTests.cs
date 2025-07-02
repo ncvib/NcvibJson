@@ -3,7 +3,7 @@ using NcvibJson.Common.Definitions.V2_0;
 using NcvibJson.Common.Standards.V2_0;
 using NcvibJson.Triggered.V2_0;
 
-namespace NcvibJson.Tests;
+namespace NcvibJson.Tests.Triggered.V2_0;
 
 [TestFixture]
 public class TriggeredDataSchemaValidationTests

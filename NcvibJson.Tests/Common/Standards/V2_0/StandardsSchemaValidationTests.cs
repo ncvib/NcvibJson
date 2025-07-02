@@ -1,7 +1,7 @@
 using System.Text.Json;
 using NcvibJson.Common.Standards.V2_0;
 
-namespace NcvibJson.Tests;
+namespace NcvibJson.Tests.Common.Standards.V2_0;
 
 [TestFixture]
 public class StandardsSchemaValidationTests
