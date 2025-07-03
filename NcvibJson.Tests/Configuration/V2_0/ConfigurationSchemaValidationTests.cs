@@ -19,7 +19,7 @@ public class ConfigurationSchemaValidationTests : ConfigurationTests
     }
     
     [Test]
-    public void ConfigurationJsonWithNodeHavingPredefinedFilterShouldPassValidation()
+    public void ConfigurationJsonWithNodeHavingPredefinedFilterNameShouldPassValidation()
     {
         var filterTypes = 
             Enum
