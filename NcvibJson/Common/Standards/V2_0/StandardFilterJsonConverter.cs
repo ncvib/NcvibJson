@@ -29,15 +29,23 @@ public class StandardFilterJsonConverter : JsonConverter<StandardFilter>
                 };
             }
             case JsonTokenType.StartObject:
-                var newOptions = new JsonSerializerOptions(options);
-                var convertersToKeep = options.Converters.Where(c => c is not StandardFilterJsonConverter).ToList();
-                newOptions.Converters.Clear();
-                foreach (var converter in convertersToKeep)
+                using (var doc = JsonDocument.ParseValue(ref reader))
                 {
-                    newOptions.Converters.Add(converter);
+                    var root = doc.RootElement;
+                    
+                    var name = root.TryGetProperty("name", out JsonElement nameElement) 
+                        ? nameElement.GetString() ?? string.Empty 
+                        : string.Empty;
+                    
+                    return new StandardFilter 
+                    { 
+                        Name = name,
+                        FilterDefinition = (root.TryGetProperty("filterDefinition", out JsonElement filterDef)
+                            ? JsonSerializer.Deserialize<FilterDefinition>(filterDef.GetRawText(), options)
+                            : new FilterDefinition {LowPass = 0, HighPass = 1000}) ?? new FilterDefinition(lowPass: 0, highPass: 1000)
+                    };
                 }
-                
-                return JsonSerializer.Deserialize<StandardFilter>(ref reader, newOptions);
+
             case JsonTokenType.None:
             case JsonTokenType.EndObject:
             case JsonTokenType.StartArray:
