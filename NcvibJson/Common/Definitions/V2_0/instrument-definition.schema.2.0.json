@@ -1,13 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "InstrumentDefinition",
-  "description": "Defines an instrument with its company, type, and serial number",
+  "description": "Defines an instrument with its company, type, and serial numbers",
   "type": "object",
   "required": [
     "formatVersion",
     "company",
-    "type",
-    "serialNumber"
+    "sensorType",
+    "sensorSerialNumber"
   ],
   "properties": {
     "formatVersion": {
@@ -19,13 +19,21 @@
       "type": "string",
       "description": "The company that manufactured the instrument"
     },
-    "type": {
-      "type": "string",
-      "description": "The type or model of the instrument"
+    "loggerType": {
+      "type": ["string", "null"],
+      "description": "The type or model of the logger"
     },
-    "serialNumber": {
+    "sensorType": {
+      "type": "string",
+      "description": "The type or model of the sensor"
+    },    
+    "loggerSerialNumber": {
+      "type": ["integer", "null"],
+      "description": "The serial number of the logger"
+    },    
+    "sensorSerialNumber": {
       "type": "integer",
-      "description": "The serial number of the instrument"
+      "description": "The serial number of the sensor"
     }
   },
   "additionalProperties": false

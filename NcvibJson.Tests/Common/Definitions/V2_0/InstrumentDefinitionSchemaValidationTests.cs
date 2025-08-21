@@ -71,7 +71,7 @@ public class InstrumentDefinitionSchemaValidationTests
     {
         var instrument = CreateBasicInstrumentDefinition();
         var serialized = JsonSerializer.Serialize(instrument, options: _jsonSerializerOptions);
-        serialized = TestJsonHelper.ReplaceValue(serialized, "type", null);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "sensorType", null);
         Console.WriteLine(serialized);
         
         var validationResult = _validator.ValidateJson(serialized, SchemaType.InstrumentDefinition);
@@ -84,7 +84,7 @@ public class InstrumentDefinitionSchemaValidationTests
     {
         var instrument = CreateBasicInstrumentDefinition();
         var serialized = JsonSerializer.Serialize(instrument, options: _jsonSerializerOptions);
-        serialized = TestJsonHelper.ReplaceValue(serialized, "type", null, true);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "sensorType", null, true);
         Console.WriteLine(serialized);
         
         var validationResult = _validator.ValidateJson(serialized, SchemaType.InstrumentDefinition);
@@ -93,30 +93,82 @@ public class InstrumentDefinitionSchemaValidationTests
     }    
     
     [Test]
-    public void InstrumentDefinitionJsonWithNullSerialNumberShouldNotPassValidation()
+    public void InstrumentDefinitionJsonWithNullLoggerTypeShouldPassValidation()
     {
         var instrument = CreateBasicInstrumentDefinition();
         var serialized = JsonSerializer.Serialize(instrument, options: _jsonSerializerOptions);
-        serialized = TestJsonHelper.ReplaceValue(serialized, "serialNumber", null);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "loggerType", null);
+        Console.WriteLine(serialized);
+        
+        var validationResult = _validator.ValidateJson(serialized, SchemaType.InstrumentDefinition);
+        
+        Assert.That(validationResult, Is.True);        
+    }
+
+    [Test]
+    public void InstrumentDefinitionJsonWithoutLoggerTypeShouldPassValidation()
+    {
+        var instrument = CreateBasicInstrumentDefinition();
+        var serialized = JsonSerializer.Serialize(instrument, options: _jsonSerializerOptions);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "loggerType", null, true);
+        Console.WriteLine(serialized);
+        
+        var validationResult = _validator.ValidateJson(serialized, SchemaType.InstrumentDefinition);
+        
+        Assert.That(validationResult, Is.True);        
+    }        
+    
+    [Test]
+    public void InstrumentDefinitionJsonWithNullSensorSerialNumberShouldNotPassValidation()
+    {
+        var instrument = CreateBasicInstrumentDefinition();
+        var serialized = JsonSerializer.Serialize(instrument, options: _jsonSerializerOptions);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "sensorSerialNumber", null);
         Console.WriteLine(serialized);
         
         var validationResult = _validator.ValidateJson(serialized, SchemaType.InstrumentDefinition);
         
         Assert.That(validationResult, Is.False);        
     }
-
+    
     [Test]
-    public void InstrumentDefinitionJsonWithoutSerialNumberShouldNotPassValidation()
+    public void InstrumentDefinitionJsonWithNullLoggerSerialNumberShouldPassValidation()
     {
         var instrument = CreateBasicInstrumentDefinition();
         var serialized = JsonSerializer.Serialize(instrument, options: _jsonSerializerOptions);
-        serialized = TestJsonHelper.ReplaceValue(serialized, "serialNumber", null, true);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "loggerSerialNumber", null);
+        Console.WriteLine(serialized);
+        
+        var validationResult = _validator.ValidateJson(serialized, SchemaType.InstrumentDefinition);
+        
+        Assert.That(validationResult, Is.True);        
+    }    
+
+    [Test]
+    public void InstrumentDefinitionJsonWithoutSensorSerialNumberShouldNotPassValidation()
+    {
+        var instrument = CreateBasicInstrumentDefinition();
+        var serialized = JsonSerializer.Serialize(instrument, options: _jsonSerializerOptions);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "sensorSerialNumber", null, true);
         Console.WriteLine(serialized);
         
         var validationResult = _validator.ValidateJson(serialized, SchemaType.InstrumentDefinition);
         
         Assert.That(validationResult, Is.False);        
-    }        
+    }   
+    
+    [Test]
+    public void InstrumentDefinitionJsonWithoutLoggerSerialNumberShouldPassValidation()
+    {
+        var instrument = CreateBasicInstrumentDefinition();
+        var serialized = JsonSerializer.Serialize(instrument, options: _jsonSerializerOptions);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "loggerSerialNumber", null, true);
+        Console.WriteLine(serialized);
+        
+        var validationResult = _validator.ValidateJson(serialized, SchemaType.InstrumentDefinition);
+        
+        Assert.That(validationResult, Is.True);        
+    }       
 
     private InstrumentDefinition CreateBasicInstrumentDefinition()
     {
@@ -124,8 +176,8 @@ public class InstrumentDefinitionSchemaValidationTests
         {
             FormatVersion = "2.0",
             Company = "AnyCompany",
-            Type = "AnyInstrumentType",
-            SerialNumber = 123456
+            SensorType = "AnyInstrumentType",
+            SensorSerialNumber = 123456
         };
     }
 }

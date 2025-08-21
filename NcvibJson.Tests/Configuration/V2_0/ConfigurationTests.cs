@@ -51,8 +51,8 @@ public class ConfigurationTests
             {
                 FormatVersion = "2.0",
                 Company = "AnyCompany",
-                Type = "AnyInstrumentType",
-                SerialNumber = 123456
+                SensorType = "AnyInstrumentType",
+                SensorSerialNumber = 123456
             }
         };
     }

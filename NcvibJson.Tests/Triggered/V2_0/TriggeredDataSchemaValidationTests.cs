@@ -173,8 +173,8 @@ public class TriggeredDataSchemaValidationTests
             {
                 FormatVersion = "2.0",
                 Company = "AnyCompany",
-                Type = "AnyInstrumentType",
-                SerialNumber = 123456
+                SensorType = "AnyInstrumentType",
+                SensorSerialNumber = 123456
             },
             MeasuredQuantity = TriggeredData.MeasuredQuantityType.Velocity,
             MeasuredUnit = "mm/s",

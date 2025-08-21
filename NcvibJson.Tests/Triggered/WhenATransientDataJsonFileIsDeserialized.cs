@@ -27,8 +27,8 @@ public class WhenATransientDataJsonFileIsDeserialized
                                   "instrument": {
                                     "formatVersion": "2.0",
                                     "company": "NorSonic",
-                                    "type": "Nor163",
-                                    "serialNumber": 163000012
+                                    "sensorType": "Nor163",
+                                    "sensorSerialNumber": 163000012
                                   },
                                   "sensorType": "Nor1702",
                                   "port": 1,
