@@ -22,10 +22,6 @@
       "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
       "description": "The instrument definition"
     },
-    "sensorType": {
-      "type": ["string", "null"],
-      "description": "Type of sensor used for measurements"
-    },
     "port": {
       "type": ["integer", "null"],
       "description": "Port number used for measurements",

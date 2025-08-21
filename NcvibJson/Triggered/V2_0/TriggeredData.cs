@@ -8,7 +8,6 @@ public class TriggeredData
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; } = "2.0";
     [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
-    [JsonPropertyName("sensorType")] public string? SensorType { get; set; }
     [JsonPropertyName("port")] public int? Port { get; set; } = 0;
     [JsonPropertyName("coordinates")] public Coordinates? Coordinates { get; set; }
     [JsonPropertyName("battery")] public string? Battery { get; set; }
