@@ -46,7 +46,9 @@ public class TriggeredData
         Displacement,
         Voltage,
         SoundPressure,
-        SoundIntensity        
+        SoundIntensity,
+        SoundLevel,
+        VibrationLevel
     }
 
     public class SampleItem
