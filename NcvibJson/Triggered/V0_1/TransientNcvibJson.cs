@@ -26,13 +26,13 @@ namespace NcvibJson.Triggered.V0_1
 
         public List<double> PeakParticleVelocity { get; set; } = new List<double>();
         public float? VectorPeakParticleVelocity { get; set; }
-        public required string PeakParticleVelocityUnit { get; set; }
+        public required string PeakParticleVelocityUnit { get; set; } = "mm/s";
 
         public List<double> PeakParticleAcceleration { get; set; } = new List<double>();
-        public required string PeakParticleAccelerationUnit { get; set; }
+        public required string PeakParticleAccelerationUnit { get; set; } = "mm/s^2";
 
         public List<double> PeakParticleDisplacement { get; set; } = new List<double>();
-        public required string PeakParticleDisplacementUnit { get; set; }
+        public required string PeakParticleDisplacementUnit { get; set; } = "mm";
 
         public List<double> ZeroCuttingFrequencyVelocity { get; set; } = new List<double>();
         public List<double> ZeroCuttingFrequencyAcceleration { get; set; } = new List<double>();
