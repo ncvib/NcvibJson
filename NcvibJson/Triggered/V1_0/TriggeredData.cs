@@ -6,9 +6,10 @@ public class TriggeredData
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; }
     [JsonPropertyName("instrumentCompany")] public required string InstrumentCompany { get; set; }
-    [JsonPropertyName("instrumentType")] public required string InstrumentType { get; set; } // LoggerType
-    [JsonPropertyName("serialNumber")] public required string SerialNumber { get; set; }
+    [JsonPropertyName("loggerType")] public string? LoggerType { get; set; }
+    [JsonPropertyName("loggerSerialNumber")] public int? LoggerSerialNumber { get; set; }
     [JsonPropertyName("sensorType")] public string? SensorType { get; set; }
+    [JsonPropertyName("serialNumber")] public required int SerialNumber { get; set; }
     [JsonPropertyName("port")] public int? Port { get; set; }
     [JsonPropertyName("startTime")] public required DateTimeOffset Time { get; set; }
     [JsonPropertyName("sampleRate")] public required double SampleRate { get; set; }

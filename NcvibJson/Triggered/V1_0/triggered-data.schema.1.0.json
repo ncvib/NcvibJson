@@ -5,7 +5,7 @@
   "required": [
     "formatVersion",
     "instrumentCompany",
-    "instrumentType",
+    "sensorType",
     "serialNumber",
     "time",
     "sampleRate",
@@ -19,10 +19,13 @@
     "instrumentCompany": {
       "type": "string"
     },
-    "instrumentType": {
+    "loggerType": {
       "type": "string",
       "description": "LoggerType"
     },
+    "loggerSerialNumber": {
+      "type": "string"
+    },    
     "serialNumber": {
       "type": "string"
     },

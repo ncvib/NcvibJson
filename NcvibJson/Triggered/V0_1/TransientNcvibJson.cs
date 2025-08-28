@@ -6,6 +6,8 @@ namespace NcvibJson.Triggered.V0_1
         public required string SensorCompany { get; set; }
         public required string SensorType { get; set; }
         public int SerialNumber { get; set; }
+        public string? LoggerType { get; set; }
+        public int? LoggerSerialNumber { get; set; }        
         public int? Port { get; set; }
         public DateTimeOffset Time { get; set; }
         public required string MeasuredEntity { get; set; }
