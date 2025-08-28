@@ -139,6 +139,14 @@
       "description": "Unit for zero cutting frequency acceleration",
       "default": "Hz"
     },
+    "soundLevelMax": {
+      "type": ["number", "null"],
+      "description": "maximum sound level"
+    },
+    "vibrationLevelMax": {
+      "type": ["number", "null"],
+      "description": "maximum vibration level"
+    },
     "startTime": {
       "type": "string",
       "format": "date-time",
