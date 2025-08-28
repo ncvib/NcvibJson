@@ -139,6 +139,18 @@
       "description": "Unit for zero cutting frequency acceleration",
       "default": "Hz"
     },
+    "measuresSound": {
+      "type": ["boolean", "null"],
+      "description": "measures sound"
+    },
+    "measuresVibration": {
+      "type": ["boolean", "null"],
+      "description": "measures vibration"
+    },
+    "measuresAnythingButSoundOrVibration": {
+      "type": ["boolean", "null"],
+      "description": "measures anything except sound or vibration"
+    },    
     "soundLevelMax": {
       "type": ["number", "null"],
       "description": "maximum sound level"
@@ -146,6 +158,14 @@
     "vibrationLevelMax": {
       "type": ["number", "null"],
       "description": "maximum vibration level"
+    },
+    "soundLevelAverage": {
+      "type": ["number", "null"],
+      "description": "sound level average"
+    },
+    "vibrationLevelTop10": {
+      "type": ["number", "null"],
+      "description": "vibration level top 10"
     },
     "startTime": {
       "type": "string",

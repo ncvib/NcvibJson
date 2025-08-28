@@ -28,8 +28,15 @@ public class TriggeredData
     [JsonPropertyName("zeroCuttingFrequencyVelocityUnit")] public string? ZeroCuttingFrequencyVelocityUnit { get; set; } = "Hz";
     [JsonPropertyName("zeroCuttingFrequencyAcceleration")] public List<double> ZeroCuttingFrequencyAcceleration { get; set; } = [];
     [JsonPropertyName("zeroCuttingFrequencyAccelerationUnit")] public string? ZeroCuttingFrequencyAccelerationUnit { get; set; } = "Hz";
+    
+    [JsonPropertyName("measuresSound")] public bool? MeasuresSound { get; set; }
+    [JsonPropertyName("measuresVibration")] public bool? MeasuresVibration { get; set; }
+    [JsonPropertyName("measuresAnythingButSoundOrVibration")] public bool? MeasuresAnythingButSoundOrVibration { get; set; }
     [JsonPropertyName("soundLevelMax")] public double? SoundLevelMax { get; set; }
     [JsonPropertyName("vibrationLevelMax")] public double? VibrationLevelMax { get; set; }
+    [JsonPropertyName("soundLevelAverage")] public double? SoundLevelAverage { get; set; }
+    [JsonPropertyName("vibrationLevelTop10")] public double? VibrationLevelTop10 { get; set; }
+    
     [JsonPropertyName("startTime")] public required DateTime StartTime { get; set; }
     [JsonPropertyName("sampleRate")] public required double SampleRate { get; set; }
     [JsonPropertyName("numberOfPreTriggerSamples")] public int NumberOfPreTriggerSamples { get; set; }
