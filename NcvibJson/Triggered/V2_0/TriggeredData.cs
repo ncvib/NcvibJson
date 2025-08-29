@@ -20,6 +20,7 @@ public class TriggeredData
     [JsonPropertyName("measuredUnit")] public required string MeasuredUnit { get; set; }
     [JsonPropertyName("measuredMaxValue")] public List<double> MeasuredMaxValue { get; set; } = [];
     [JsonPropertyName("peakParticleVelocity")] public List<double> PeakParticleVelocity { get; set; } = [];
+    [JsonPropertyName("vectorPeakParticleVelocity")] public float? VectorPeakParticleVelocity { get; set; }
     [JsonPropertyName("peakParticleVelocityUnit")] public string? PeakParticleVelocityUnit { get; set; } = "mm/s";
     [JsonPropertyName("peakParticleAcceleration")] public List<double> PeakParticleAcceleration { get; set; } = [];
     [JsonPropertyName("peakParticleAccelerationUnit")] public string? PeakParticleAccelerationUnit { get; set; } = "mm/s^2";

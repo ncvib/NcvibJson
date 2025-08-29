@@ -86,6 +86,10 @@
       "description": "Peak particle velocity values",
       "default": []
     },
+    "vectorPeakParticleVelocity": {
+      "type": ["number", "null"],
+      "description": "Vector peak particle velocity"
+    },    
     "peakParticleVelocityUnit": {
       "type": ["string", "null"],
       "description": "Unit for peak particle velocity",
