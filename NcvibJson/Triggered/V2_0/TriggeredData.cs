@@ -50,6 +50,7 @@ public class TriggeredData
 
     public enum MeasuredQuantityType
     {
+        Unknown,
         Velocity,
         Acceleration,
         Displacement,

@@ -151,6 +151,9 @@ public class TriggeredDataSchemaValidationTests
     [TestCase("Voltage")]
     [TestCase("SoundPressure")]
     [TestCase("SoundIntensity")]
+    [TestCase("SoundLevel")]
+    [TestCase("VibrationLevel")]
+    [TestCase("Unknown")]
     public void TriggeredData_ValidMeasuredQuantities_ShouldPass(string quantity)
     {
         var triggeredData = CreateBasicTriggeredData();

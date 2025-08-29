@@ -246,7 +246,10 @@
         "Displacement",
         "Voltage",
         "SoundPressure",
-        "SoundIntensity"
+        "SoundIntensity",
+        "SoundLevel",
+        "VibrationLevel",
+        "Unknown"
       ],
       "description": "Types of physical quantities that can be measured"
     },
