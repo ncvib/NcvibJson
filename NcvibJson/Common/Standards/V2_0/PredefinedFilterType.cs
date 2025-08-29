@@ -2,7 +2,7 @@ namespace NcvibJson.Common.Standards.V2_0;
 
 public enum PredefinedFilterType
 {
-    Unknown = 0,
+    NoFilter = 0,
     ISEESeismograph,
     DIN41503,
     DIN41502KB,

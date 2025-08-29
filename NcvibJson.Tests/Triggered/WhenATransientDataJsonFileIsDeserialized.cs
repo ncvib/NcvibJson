@@ -37,7 +37,7 @@ public class WhenATransientDataJsonFileIsDeserialized
                                   "overload": false,
                                   "filteredSamples": false,
                                   "standard": {
-                                    "name": "Unknown",
+                                    "name": "NoFilter",
                                     "filterDefinition": {
                                       "lowPass": 0,
                                       "highPass": 1000

@@ -7,7 +7,7 @@
       "properties": {
         "name": {
           "enum": [
-            "Unknown"
+            "NoFilter"
           ]
         },
         "filterDefinition": {

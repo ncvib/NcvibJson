@@ -7,9 +7,9 @@ public static class PredefinedFilters
     private static Dictionary<PredefinedFilterType, StandardFilter> Filters => new()
     {
         {
-            PredefinedFilterType.Unknown, new StandardFilter
+            PredefinedFilterType.NoFilter, new StandardFilter
             {
-                Name = "Unknown",
+                Name = "NoFilter",
                 FilterDefinition = new FilterDefinition {LowPass = 0, HighPass = 1000}
             }
         },
