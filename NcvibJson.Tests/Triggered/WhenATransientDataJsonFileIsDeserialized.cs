@@ -24,6 +24,7 @@ public class WhenATransientDataJsonFileIsDeserialized
     private const string Json = """
                                 {
                                   "formatVersion": "2.0",
+                                  "hashId": "1234567890",
                                   "instrument": {
                                     "formatVersion": "2.0",
                                     "company": "NorSonic",

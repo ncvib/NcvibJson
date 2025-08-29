@@ -172,6 +172,7 @@ public class TriggeredDataSchemaValidationTests
         var triggeredData = new TriggeredData
         {
             FormatVersion = "2.0",
+            HashId = Guid.NewGuid().ToString(),
             InstrumentDefinition = new InstrumentDefinition
             {
                 FormatVersion = "2.0",

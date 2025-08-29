@@ -7,6 +7,7 @@ namespace NcvibJson.Triggered.V2_0;
 public class TriggeredData
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; } = "2.0";
+    [JsonPropertyName("hashId")] public required string HashId { get; set; } = "should be unique";
     [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
     [JsonPropertyName("port")] public int? Port { get; set; } = 0;
     [JsonPropertyName("coordinates")] public Coordinates? Coordinates { get; set; }
