@@ -9,7 +9,7 @@ The converters will be used in two different scenarios:
   - Ex: Applying a bandpass filter to the transient data in the waveform viewer. 
 
 ## Steps to create a converter:
-- Create an assembly implementing IConverter
+- Create an assembly with a class implementing IConverter
 - Implement the specific conversion from the proprietary input formats to the generic Ncvib formats.
 - Communicate supported capabilities (if any) using CommonConverterCapabilities and TransientConverterCapabilities
   - Ex: public TransientConverterCapabilities TransientConverterCapabilities => TransientConverterCapabilities.FastFourierTransformation | TransientConverterCapabilities.TimeDomainSwitching;
