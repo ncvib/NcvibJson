@@ -12,7 +12,7 @@ public class ContinuousData
     [JsonPropertyName("intervalTimeInSeconds")] public required int IntervalTimeInSeconds { get; set; }
     [JsonPropertyName("quantity")]public required string Quantity { get; set; }
     [JsonPropertyName("unit")]public required string  Unit { get; set; } // m/s, m/s^2, etc.
-    [JsonPropertyName("axes")] public List<Axis>? Axes { get; set; }
+    [JsonPropertyName("axes")] public List<Axis> Axes { get; set; } = [];
 
     [JsonPropertyName("samples")] public required List<Sample> Samples { get; set; } = [];
 
