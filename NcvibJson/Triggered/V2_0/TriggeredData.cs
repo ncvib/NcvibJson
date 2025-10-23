@@ -69,7 +69,7 @@ public class TriggeredData
         [JsonPropertyName("timeOffsetInSeconds")] public double? TimeOffsetInSeconds { get; set; }
     }
     
-    [JsonPropertyName("measuresAnythingButSoundOrVibration")] public bool MeasuresAnythingButSoundOrVibration => !MeasuresSound && !MeasuresVibration;
-    [JsonPropertyName("measuresSound")] public bool MeasuresSound => MeasuredQuantity is MeasuredQuantityType.SoundLevel or MeasuredQuantityType.SoundIntensity or MeasuredQuantityType.SoundPressure;
-    [JsonPropertyName("measuresVibration")] public bool MeasuresVibration => MeasuredQuantity == MeasuredQuantityType.VibrationLevel;
+    [JsonPropertyName("measuresAnythingButSoundOrVibration")] public bool? MeasuresAnythingButSoundOrVibration => MeasuresSound != null && !MeasuresSound.Value && MeasuresVibration != null && !MeasuresVibration.Value;
+    [JsonPropertyName("measuresSound")] public bool? MeasuresSound => MeasuredQuantity is MeasuredQuantityType.SoundLevel or MeasuredQuantityType.SoundIntensity or MeasuredQuantityType.SoundPressure;
+    [JsonPropertyName("measuresVibration")] public bool? MeasuresVibration => MeasuredQuantity == MeasuredQuantityType.VibrationLevel;
 }
