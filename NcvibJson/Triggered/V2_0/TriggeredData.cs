@@ -31,9 +31,6 @@ public class TriggeredData
     [JsonPropertyName("zeroCuttingFrequencyAcceleration")] public List<double> ZeroCuttingFrequencyAcceleration { get; set; } = [];
     [JsonPropertyName("zeroCuttingFrequencyAccelerationUnit")] public string? ZeroCuttingFrequencyAccelerationUnit { get; set; } = "Hz";
     
-    [JsonPropertyName("measuresSound")] public bool? MeasuresSound { get; set; }
-    [JsonPropertyName("measuresVibration")] public bool? MeasuresVibration { get; set; }
-    [JsonPropertyName("measuresAnythingButSoundOrVibration")] public bool? MeasuresAnythingButSoundOrVibration { get; set; }
     [JsonPropertyName("soundLevelMax")] public double? SoundLevelMax { get; set; }
     [JsonPropertyName("vibrationLevelMax")] public double? VibrationLevelMax { get; set; }
     [JsonPropertyName("soundLevelAverage")] public double? SoundLevelAverage { get; set; }
@@ -71,4 +68,8 @@ public class TriggeredData
         [JsonPropertyName("value")] public List<double> Value { get; set; } = [];
         [JsonPropertyName("timeOffsetInSeconds")] public double? TimeOffsetInSeconds { get; set; }
     }
+    
+    [JsonPropertyName("measuresAnythingButSoundOrVibration")] public bool MeasuresAnythingButSoundOrVibration => !MeasuresSound && !MeasuresVibration;
+    [JsonPropertyName("measuresSound")] public bool MeasuresSound => MeasuredQuantity is MeasuredQuantityType.SoundLevel or MeasuredQuantityType.SoundIntensity or MeasuredQuantityType.SoundPressure;
+    [JsonPropertyName("measuresVibration")] public bool MeasuresVibration => MeasuredQuantity == MeasuredQuantityType.VibrationLevel;
 }
