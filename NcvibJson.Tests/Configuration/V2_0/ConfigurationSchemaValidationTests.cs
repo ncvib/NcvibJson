@@ -89,4 +89,41 @@ public class ConfigurationSchemaValidationTests : ConfigurationTests
         
         Assert.That(validationResult, Is.False);        
     }
+    
+    [Test]
+    public void ConfigurationJsonWithPretriggeredValueShouldPassValidation()
+    {
+        var configuration = CreateBasicConfigurationWithNode(preTrigger: 2);
+        var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
+        Console.WriteLine(serialized);
+        
+        var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
+        
+        Assert.That(validationResult, Is.True);        
+    }
+    
+    [Test]
+    public void ConfigurationJsonWithNullPretriggeredValueShouldPassValidation()
+    {
+        var configuration = CreateBasicConfigurationWithNode(preTrigger: null);
+        var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
+        Console.WriteLine(serialized);
+        
+        var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
+        
+        Assert.That(validationResult, Is.True);        
+    } 
+    
+    [Test]
+    public void ConfigurationJsonWithoutPretriggeredValueShouldPassValidation()
+    {
+        var configuration = CreateBasicConfigurationWithNode(preTrigger: null);
+        var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "nodeConfigurations[0].preTriggerPeriodInSeconds", null, true);
+        Console.WriteLine(serialized);
+        
+        var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
+        
+        Assert.That(validationResult, Is.True);        
+    } 
 }

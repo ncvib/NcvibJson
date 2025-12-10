@@ -21,6 +21,6 @@ public class Configuration
         [JsonPropertyName("recordingPeriodInSeconds")] public int RecordingPeriodInSeconds { get; set; } = 5;
         [JsonPropertyName("threshold")] public double Threshold { get; set; } = 1.0;
         [JsonPropertyName("thresholdActive")] public bool ThresholdActive { get; set; } = true;
-        [JsonPropertyName("preTriggerPeriodInSeconds")] public int PreTriggerPeriodInSeconds { get; set; } = 1;
+        [JsonPropertyName("preTriggerPeriodInSeconds")] public int? PreTriggerPeriodInSeconds { get; set; }
     }    
 }

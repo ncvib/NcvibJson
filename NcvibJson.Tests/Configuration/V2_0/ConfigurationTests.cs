@@ -1,5 +1,6 @@
 using System.Text.Json;
 using NcvibJson.Common.Definitions.V2_0;
+using NcvibJson.Common.Standards.V2_0;
 
 namespace NcvibJson.Tests.Configuration.V2_0;
 
@@ -56,4 +57,31 @@ public class ConfigurationTests
             }
         };
     }
+    
+    protected NcvibJson.Configuration.V2_0.Configuration CreateBasicConfigurationWithNode(int? preTrigger = null)
+    {
+        var node = new NcvibJson.Configuration.V2_0.Configuration.NodeConfiguration
+        {
+            Axis = Axis.Longitudinal,
+            IntervalPeriodInSeconds = 5,
+            Threshold = 1,
+            ThresholdActive = true,
+            RecordingPeriodInSeconds = 5,
+            Standard = null,
+            PreTriggerPeriodInSeconds = preTrigger
+        };
+        
+        return new NcvibJson.Configuration.V2_0.Configuration
+        {
+            FormatVersion = "2.0",
+            InstrumentDefinition = new InstrumentDefinition
+            {
+                FormatVersion = "2.0",
+                Company = "AnyCompany",
+                SensorType = "AnyInstrumentType",
+                SensorSerialNumber = 123456
+            },
+            NodeConfigurations = [node]
+        };
+    }    
 }

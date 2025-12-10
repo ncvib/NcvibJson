@@ -83,10 +83,11 @@
           "default": false
         },
         "preTriggerPeriodInSeconds": {
-          "type": "integer",
-          "description": "Duration of additional time recorded before an actual recording, in seconds",
-          "default": 1,
-          "minimum": 0
+          "oneOf": [
+              { "type": "null" },
+              { "type": "integer" }
+            ],
+          "description": "Optional duration of additional time recorded before an actual recording, in seconds"
         }
       },
       "additionalProperties": false
