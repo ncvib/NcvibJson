@@ -81,6 +81,12 @@
           "type": "boolean",
           "description": "Whether the threshold filter is active",
           "default": false
+        },
+        "preTriggerPeriodInSeconds": {
+          "type": "integer",
+          "description": "Duration of additional time recorded before an actual recording, in seconds",
+          "default": 1,
+          "minimum": 0
         }
       },
       "additionalProperties": false
