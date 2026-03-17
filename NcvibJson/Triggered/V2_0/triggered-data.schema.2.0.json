@@ -175,6 +175,11 @@
       "type": ["number", "null"],
       "description": "vibration level top 10"
     },
+    "timeZone": {
+      "type": ["string", "null"],
+      "description": "IANA time zone identifier for the instrument (null means time is to be treated as is - aka local time)",
+      "default": "null"
+    },    
     "startTime": {
       "type": "string",
       "format": "date-time",

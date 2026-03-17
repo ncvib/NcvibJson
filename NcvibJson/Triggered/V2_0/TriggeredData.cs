@@ -36,6 +36,7 @@ public class TriggeredData
     [JsonPropertyName("soundLevelAverage")] public double? SoundLevelAverage { get; set; }
     [JsonPropertyName("vibrationLevelTop10")] public double? VibrationLevelTop10 { get; set; }
     
+    [JsonPropertyName("timeZone")] public string? TimeZone { get; set; }
     [JsonPropertyName("startTime")] public required DateTime StartTime { get; set; }
     [JsonPropertyName("sampleRate")] public required double SampleRate { get; set; }
     [JsonPropertyName("numberOfPreTriggerSamples")] public int NumberOfPreTriggerSamples { get; set; }
