@@ -43,7 +43,7 @@ jobs:
           dotnet nuget add source "${{ env.NUGET_FEED_URL }}" `
             --name AzureDevOps `
             --username az `
-            --password "${{ secrets.AZURE_DEVOPS_NUGET_PAT2 }}" `
+            --password "${{ secrets.AZURE_DEVOPS_NUGET_PAT3 }}" `
             --store-password-in-clear-text
 
       - name: Publish
