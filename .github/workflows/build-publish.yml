@@ -1,0 +1,59 @@
+name: Build & Publish NuGet
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+env:
+  NUGET_FEED_URL: https://ncdevelopment.pkgs.visualstudio.com/NCVIB/_packaging/NCVIB.Shared.DevOps/nuget/v3/index.json
+
+jobs:
+  build-publish:
+    runs-on: [self-hosted, dev]
+    defaults:
+      run:
+        shell: powershell
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore
+        run: dotnet restore NcvibJson.sln
+
+      - name: Build
+        run: dotnet build NcvibJson.sln -c Release --no-restore
+
+      - name: Test
+        run: dotnet test NcvibJson.sln -c Release --no-build
+
+      - name: Pack
+        run: >
+          dotnet pack NcvibJson/NcvibJson.csproj
+          -c Release --no-build -o ./nupkg
+          -p:PackageVersion=2.0.${{ github.run_number }}
+          -p:Version=2.0.${{ github.run_number }}
+
+      - name: Configure NuGet source
+        run: |
+          $sources = dotnet nuget list source 2>&1
+          if ($sources -match "AzureDevOps") {
+            dotnet nuget remove source AzureDevOps
+          }
+          dotnet nuget add source "${{ env.NUGET_FEED_URL }}" `
+            --name AzureDevOps `
+            --username az `
+            --password "${{ secrets.AZURE_DEVOPS_NUGET_PAT2 }}" `
+            --store-password-in-clear-text
+
+      - name: Publish
+        run: |
+          Get-ChildItem ./nupkg/*.nupkg | ForEach-Object {
+            dotnet nuget push $_.FullName --source AzureDevOps --api-key AzureDevOps --skip-duplicate
+          }
+
+      - name: Cleanup NuGet source
+        if: always()
+        run: |
+          dotnet nuget remove source AzureDevOps 2>$null
+          exit 0
