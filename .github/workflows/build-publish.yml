@@ -10,7 +10,7 @@ env:
 
 jobs:
   build-publish:
-    runs-on: [self-hosted, dev]
+    runs-on: windows-latest
     defaults:
       run:
         shell: powershell
