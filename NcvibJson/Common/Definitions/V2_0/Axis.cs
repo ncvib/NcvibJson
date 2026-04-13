@@ -6,6 +6,7 @@ namespace NcvibJson.Common.Definitions.V2_0;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Axis
 {
+    [EnumMember(Value = "N")] None,
     [EnumMember(Value = "V")] Vertical,
     [EnumMember(Value = "L")] Longitudinal,
     [EnumMember(Value = "T")] Transversal

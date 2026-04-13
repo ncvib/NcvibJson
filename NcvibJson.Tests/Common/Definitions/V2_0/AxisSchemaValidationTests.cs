@@ -15,9 +15,11 @@ public class AxisSchemaValidationTests
     }
     
     [Test]
+    [TestCase("None")]
     [TestCase("Vertical")]
     [TestCase("Longitudinal")]
     [TestCase("Transversal")]
+    [TestCase("N")]
     [TestCase("V")]
     [TestCase("L")]
     [TestCase("T")]
