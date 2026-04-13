@@ -18,9 +18,11 @@ public class AxisSchemaValidationTests
     [TestCase("Vertical")]
     [TestCase("Longitudinal")]
     [TestCase("Transversal")]
+    [TestCase("None")]
     [TestCase("V")]
     [TestCase("L")]
     [TestCase("T")]
+    [TestCase("N")]
     public void ValidAxisJsonShouldPassValidation(string axis)
     {
         var serialized = JsonSerializer.Serialize(axis, options: JsonSerializerOptions);

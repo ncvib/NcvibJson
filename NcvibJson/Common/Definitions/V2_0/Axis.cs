@@ -8,5 +8,6 @@ public enum Axis
 {
     [EnumMember(Value = "V")] Vertical,
     [EnumMember(Value = "L")] Longitudinal,
-    [EnumMember(Value = "T")] Transversal
+    [EnumMember(Value = "T")] Transversal,
+    [EnumMember(Value = "N")] None
 }
