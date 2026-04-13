@@ -31,8 +31,8 @@ jobs:
         run: >
           dotnet pack NcvibJson/NcvibJson.csproj
           -c Release --no-build -o ./nupkg
-          -p:PackageVersion=2.0.${{ github.run_number }}
-          -p:Version=2.0.${{ github.run_number }}
+          -p:PackageVersion=2.0.${{ github.run_number + vars.VERSION_OFFSET }}
+          -p:Version=2.0.${{ github.run_number + vars.VERSION_OFFSET }}
 
       - name: Configure NuGet source
         run: |
