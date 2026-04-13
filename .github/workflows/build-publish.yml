@@ -27,12 +27,18 @@ jobs:
       - name: Test
         run: dotnet test NcvibJson.sln -c Release --no-build
 
+      - name: Calculate version
+        id: version
+        run: |
+          $v = ${{ github.run_number }} + ${{ vars.VERSION_OFFSET }}
+          echo "number=$v" >> $env:GITHUB_OUTPUT
+
       - name: Pack
         run: >
           dotnet pack NcvibJson/NcvibJson.csproj
           -c Release --no-build -o ./nupkg
-          -p:PackageVersion=2.0.${{ github.run_number + vars.VERSION_OFFSET }}
-          -p:Version=2.0.${{ github.run_number + vars.VERSION_OFFSET }}
+          -p:PackageVersion=2.0.${{ steps.version.outputs.number }}
+          -p:Version=2.0.${{ steps.version.outputs.number }}
 
       - name: Configure NuGet source
         run: |
