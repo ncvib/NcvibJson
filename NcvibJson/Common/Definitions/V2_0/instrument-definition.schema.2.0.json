@@ -13,7 +13,7 @@
     "formatVersion": {
       "type": "string",
       "enum": ["2.0"],
-      "description": "The format version of the instrument definition",
+      "description": "The format version of the instrument definition"
     },
     "company": {
       "type": "string",

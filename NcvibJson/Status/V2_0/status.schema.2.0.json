@@ -5,14 +5,14 @@
   "type": "object",
   "required": [
     "formatVersion",
-    "instrument"
+    "instrumentDefinition"
   ],
   "properties": {
     "formatVersion": {
       "type": "string",
       "enum": ["2.0"]
     },
-    "instrument": {
+    "instrumentDefinition": {
       "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
       "description": "The instrument definition"
     },
@@ -71,10 +71,10 @@
     "Node": {
       "type": "object",
       "required": [
-        "instrument"
+        "instrumentDefinition"
       ],
       "properties": {
-        "instrument": {
+        "instrumentDefinition": {
           "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
           "description": "The instrument definition for the node"
         },

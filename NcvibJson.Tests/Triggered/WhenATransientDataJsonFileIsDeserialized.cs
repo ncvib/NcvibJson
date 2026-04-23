@@ -25,7 +25,7 @@ public class WhenATransientDataJsonFileIsDeserialized
                                 {
                                   "formatVersion": "2.0",
                                   "hashId": "1234567890",
-                                  "instrument": {
+                                  "instrumentDefinition": {
                                     "formatVersion": "2.0",
                                     "company": "NorSonic",
                                     "sensorType": "Nor1702",

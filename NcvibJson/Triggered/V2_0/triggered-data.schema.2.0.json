@@ -6,7 +6,7 @@
   "required": [
     "formatVersion",
     "hashId",
-    "instrument",
+    "instrumentDefinition",
     "measuredQuantity",
     "measuredUnit",
     "startTime",
@@ -22,7 +22,7 @@
     "hashId": {
       "type": "string"
     },    
-    "instrument": {
+    "instrumentDefinition": {
       "$ref": "../../Common/Definitions/V2_0/instrument-definition.schema.2.0.json",
       "description": "The instrument definition"
     },

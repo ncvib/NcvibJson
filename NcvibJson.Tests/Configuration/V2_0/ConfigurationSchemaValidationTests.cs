@@ -69,7 +69,7 @@ public class ConfigurationSchemaValidationTests : ConfigurationTests
     {
         var configuration = CreateBasicConfiguration();
         var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
-        serialized = TestJsonHelper.ReplaceValue(serialized, "instrument", null);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "instrumentDefinition", null);
         Console.WriteLine(serialized);
         
         var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
@@ -82,7 +82,7 @@ public class ConfigurationSchemaValidationTests : ConfigurationTests
     {
         var configuration = CreateBasicConfiguration();
         var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
-        serialized = TestJsonHelper.ReplaceValue(serialized, "instrument", null, true);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "instrumentDefinition", null, true);
         Console.WriteLine(serialized);
         
         var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
