@@ -7,7 +7,7 @@ namespace NcvibJson.Configuration.V2_0;
 public class Configuration
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; } = "2.0";
-    [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
+    [JsonPropertyName("instrumentDefinition")] public required InstrumentDefinition InstrumentDefinition { get; set; }
     [JsonPropertyName("instrumentIanaTimezone")] public string InstrumentIanaTimezone { get; set; } = "Etc/UTC";
     [JsonPropertyName("activeHours")] public List<int> ActiveHours { get; set; } = [..Enumerable.Range(0, 24)];
 

@@ -8,7 +8,7 @@ public class TriggeredData
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; } = "2.0";
     [JsonPropertyName("hashId")] public required string HashId { get; set; } = "should be unique";
-    [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
+    [JsonPropertyName("instrumentDefinition")] public required InstrumentDefinition InstrumentDefinition { get; set; }
     [JsonPropertyName("port")] public int? Port { get; set; } = 0;
     [JsonPropertyName("coordinates")] public Coordinates? Coordinates { get; set; }
     [JsonPropertyName("battery")] public string? Battery { get; set; }
@@ -16,7 +16,7 @@ public class TriggeredData
     [JsonPropertyName("overload")] public bool? Overload { get; set; }
     [JsonPropertyName("filteredSamples")] public bool FilteredSamples { get; set; }
     [JsonPropertyName("standard")] public StandardFilter? Standard { get; set; }
-    [JsonPropertyName("measuredQuantity")] [JsonConverter(typeof(JsonStringEnumConverter))] public required MeasuredQuantityType MeasuredQuantity { get; set; }
+    [JsonPropertyName("measuredQuantity")] public required MeasuredQuantityType MeasuredQuantity { get; set; }
     [JsonPropertyName("measuredUnit")] public required string MeasuredUnit { get; set; }
     [JsonPropertyName("measuredMaxValue")] public List<double> MeasuredMaxValue { get; set; } = [];
     [JsonPropertyName("peakParticleVelocity")] public List<double> PeakParticleVelocity { get; set; } = [];
@@ -48,6 +48,8 @@ public class TriggeredData
     [JsonPropertyName("sampleUnits")] public required List<string> SampleUnits { get; set; } = [];
     [JsonPropertyName("samples")] public required List<List<double>> Samples { get; set; } = [];
 
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MeasuredQuantityType
     {
         Unknown,
