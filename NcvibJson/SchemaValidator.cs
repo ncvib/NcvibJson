@@ -16,6 +16,7 @@ public class SchemaValidator : ISchemaValidator
     public SchemaValidator(ILogger<SchemaValidator>? logger = null)
     {
         _logger = logger ?? NullLogger<SchemaValidator>.Instance;
+        Console.WriteLine($"[DIAG] SchemaValidator logger: {_logger.GetType().FullName}");
 
         var assembly = typeof(SchemaValidator).Assembly;
         _tempSchemasDir = Path.Combine(Path.GetTempPath(),$"NcvibJson-Schemas-{assembly.GetName().Version}");
