@@ -1,3 +1,8 @@
+> # ⚠️ DEPRECATED — do not use
+> This is the legacy **Version 1** format, kept for historical reference only. It is **not** the
+> current format and must not be used for new integrations. Use **V2.0** instead — see the
+> [repository root README](../../../README.md).
+
 # Specification for Ncvib json
 
 Version 1

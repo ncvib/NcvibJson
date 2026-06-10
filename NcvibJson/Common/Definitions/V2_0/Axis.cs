@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NcvibJson.Common.Definitions.V2_0;
 
+[Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Axis
 {

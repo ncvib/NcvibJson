@@ -6,7 +6,7 @@ namespace NcvibJson.Continuous.V2_0;
 public class ContinuousData
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; }
-    [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
+    [JsonPropertyName("instrumentDefinition")] public required InstrumentDefinition InstrumentDefinition { get; set; }
     [JsonPropertyName("port")]public required int Port { get; set; } // NorSonic Channel
     [JsonPropertyName("timeZone")] public string? TimeZone { get; set; }
     [JsonPropertyName("startTime")] public required DateTimeOffset StartTime { get; set; }

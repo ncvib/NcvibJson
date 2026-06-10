@@ -12,14 +12,17 @@ There are also some common sub-schemas used to not repeat reusable structures:
 * Instrument-Definition - Supplier Company, Instrument Type and SerialNumber
 * Standards - A list of standards with Name + High Pass and Low Pass frequencies 
 
+> **Use V2.0 for all new integrations.** See the [repository root README](../README.md) for the
+> current spec, a valid example, and the most common producer mistakes.
+
 ## Transient/Triggered schema history
-* V2_0 is the latest version. Still in preview.
-* V1_0 is the initial version communicated outwards, but never really in use
-* V0_1 is a version not using schema used in NCVIB production until summer 2025. Also exists in NCVIB.Shared.
+* **V2_0 — current.** Use this for all new integrations.
+* V1_0 — **DEPRECATED**. Initial version communicated outwards, but never really in use.
+* V0_1 — **DEPRECATED**. Schema-less version used in NCVIB production until summer 2025. Also exists in NCVIB.Shared.
 
 
 ## Continuous/Interval schema history
-* V2_0 initial version for continuous data (interval values). Still in preview.
+* **V2_0 — current.** Initial version for continuous data (interval values).
 
 
 

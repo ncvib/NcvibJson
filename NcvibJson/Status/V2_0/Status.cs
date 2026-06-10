@@ -7,7 +7,7 @@ namespace NcvibJson.Status.V2_0;
 public class Status
 {
     [JsonPropertyName("formatVersion")] public required string FormatVersion { get; set; } = "2.0";
-    [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
+    [JsonPropertyName("instrumentDefinition")] public required InstrumentDefinition InstrumentDefinition { get; set; }
     [JsonPropertyName("temperatureCelsius")] public double? TemperatureCelsius { get; set; }
     [JsonPropertyName("batteryLevelVoltage")] public double? BatteryLevelVoltage { get; set; }
     [JsonPropertyName("batteryLevelPercentage")] public double? BatteryLevelPercentage { get; set; }
@@ -22,11 +22,12 @@ public class Status
     
     public class Node
     {
-        [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
+        [JsonPropertyName("instrumentDefinition")] public required InstrumentDefinition InstrumentDefinition { get; set; }
         [JsonPropertyName("axis")] public Axis? Axis { get; set; }
         [JsonPropertyName("status")] public NodeStatus? Status { get; set; }
     }
     
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum NodeStatus
     {

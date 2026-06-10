@@ -18,20 +18,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Restore
-        run: dotnet restore NcvibJson.sln
-
-      - name: Build
-        run: dotnet build NcvibJson.sln -c Release --no-restore
-
-      - name: Test
-        run: dotnet test NcvibJson.sln -c Release --no-build
-
       - name: Calculate version
         id: version
         run: |
           $v = ${{ github.run_number }} + ${{ vars.VERSION_OFFSET }}
           echo "number=$v" >> $env:GITHUB_OUTPUT
+
+      - name: Restore
+        run: dotnet restore NcvibJson.sln
+
+      - name: Build
+        run: dotnet build NcvibJson.sln -c Release --no-restore -p:Version=2.0.${{ steps.version.outputs.number }}
+
+      - name: Test
+        run: dotnet test NcvibJson.sln -c Release --no-build
 
       - name: Pack
         run: >
