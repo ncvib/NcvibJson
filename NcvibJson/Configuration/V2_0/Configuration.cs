@@ -10,6 +10,7 @@ public class Configuration
     [JsonPropertyName("instrument")] public required InstrumentDefinition InstrumentDefinition { get; set; }
     [JsonPropertyName("instrumentIanaTimezone")] public string InstrumentIanaTimezone { get; set; } = "Etc/UTC";
     [JsonPropertyName("activeHours")] public List<int> ActiveHours { get; set; } = [..Enumerable.Range(0, 24)];
+    [JsonPropertyName("connectionIntervalSeconds")] public int? ConnectionIntervalSeconds { get; set; }
 
     [JsonPropertyName("nodeConfigurations")] public NodeConfiguration[] NodeConfigurations { get; set; } = [];
 

@@ -121,9 +121,61 @@ public class ConfigurationSchemaValidationTests : ConfigurationTests
         var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
         serialized = TestJsonHelper.ReplaceValue(serialized, "nodeConfigurations[0].preTriggerPeriodInSeconds", null, true);
         Console.WriteLine(serialized);
-        
+
         var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
-        
-        Assert.That(validationResult, Is.True);        
-    } 
+
+        Assert.That(validationResult, Is.True);
+    }
+
+    [Test]
+    public void ConfigurationJsonWithConnectionIntervalSecondsShouldPassValidation()
+    {
+        var configuration = CreateBasicConfiguration();
+        configuration.ConnectionIntervalSeconds = 300;
+        var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
+        Console.WriteLine(serialized);
+
+        var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
+
+        Assert.That(validationResult, Is.True);
+    }
+
+    [Test]
+    public void ConfigurationJsonWithNullConnectionIntervalSecondsShouldPassValidation()
+    {
+        var configuration = CreateBasicConfiguration();
+        configuration.ConnectionIntervalSeconds = null;
+        var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
+        Console.WriteLine(serialized);
+
+        var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
+
+        Assert.That(validationResult, Is.True);
+    }
+
+    [Test]
+    public void ConfigurationJsonWithoutConnectionIntervalSecondsShouldPassValidation()
+    {
+        var configuration = CreateBasicConfiguration();
+        var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
+        serialized = TestJsonHelper.ReplaceValue(serialized, "connectionIntervalSeconds", null, true);
+        Console.WriteLine(serialized);
+
+        var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
+
+        Assert.That(validationResult, Is.True);
+    }
+
+    [Test]
+    public void ConfigurationJsonWithZeroConnectionIntervalSecondsShouldNotPassValidation()
+    {
+        var configuration = CreateBasicConfiguration();
+        configuration.ConnectionIntervalSeconds = 0;
+        var serialized = JsonSerializer.Serialize(configuration, options: JsonSerializerOptions);
+        Console.WriteLine(serialized);
+
+        var validationResult = Validator.ValidateJson(serialized, SchemaType.Configuration);
+
+        Assert.That(validationResult, Is.False);
+    }
 }

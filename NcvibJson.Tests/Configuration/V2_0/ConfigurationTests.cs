@@ -37,11 +37,18 @@ public class ConfigurationTests
         var index = 0;
         configuration.ActiveHours.ForEach(h =>
         {
-            Assert.That(h, Is.EqualTo(index++));    
+            Assert.That(h, Is.EqualTo(index++));
         });
-        
+
         Assert.That(configuration.ActiveHours.Count, Is.EqualTo(24));
-    }        
+    }
+
+    [Test]
+    public void ConfigurationShouldDefaultToNullConnectionIntervalSeconds()
+    {
+        var configuration = CreateBasicConfiguration();
+        Assert.That(configuration.ConnectionIntervalSeconds, Is.Null);
+    }
     
     protected NcvibJson.Configuration.V2_0.Configuration CreateBasicConfiguration()
     {
